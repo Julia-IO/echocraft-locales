@@ -1,0 +1,29 @@
+{
+  "_metadata": {
+    "product": "ECHOCRAFT",
+    "namespace": "errors",
+    "locale": "en-US",
+    "version": "1.0.0",
+    "generated": "2026-03-05",
+    "scope_note": "Shared namespace. Consumed by both onboarding and dashboard. Do not duplicate strings into feature namespaces — always reference errors.* keys."
+  },
+
+  "email_invalid": "Please enter a valid email address.",
+  "email_already_registered": "This email is already registered. {signin_link}?",
+  "password_too_short": "Password must be at least {min_length} characters.",
+  "password_mismatch": "Passwords do not match.",
+  "field_required": "This field is required.",
+  "upload_file_too_large": "File exceeds the {max_size} limit. Please choose a smaller file.",
+  "upload_file_wrong_type": "Unsupported file type. Accepted formats: {accepted_formats}.",
+  "network_generic": "Something went wrong. Please check your connection and try again.",
+  "session_expired": "Your session has expired. Please sign in again.",
+  "plan_upgrade_failed": "We couldn't process your upgrade. Please try again or contact support.",
+
+  "_notes": {
+    "email_already_registered": "[PLACEHOLDER] {signin_link} is an inline hyperlink. [EXPANSION RISK] Especially in DE.",
+    "password_too_short": "[PLACEHOLDER] {min_length} is an integer.",
+    "upload_file_too_large": "[PLACEHOLDER] {max_size} is a formatted file size string (e.g. '5 MB').",
+    "upload_file_wrong_type": "[PLACEHOLDER] {accepted_formats} is a comma-separated list of file extensions generated at runtime.",
+    "network_generic": "[EXPANSION RISK] Displayed in a toast or modal with limited space."
+  }
+}

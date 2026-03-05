@@ -1,0 +1,135 @@
+{
+  "_metadata": {
+    "product": "ECHOCRAFT",
+    "namespace": "dashboard",
+    "locale": "en-US",
+    "version": "1.0.0",
+    "generated": "2026-03-05"
+  },
+
+  "nav": {
+    "projects": "Projects",
+    "instruments": "Instruments",
+    "sample_library": "Sample Library",
+    "collaboration": "Collaboration",
+    "melody_generator": "Melody Generator",
+    "chord_progression": "Chord Progression",
+    "ai_composition": "AI Composition",
+    "features": "Features",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "download": "Download",
+    "sign_in": "Sign In",
+    "get_started": "Get Started Free",
+    "settings": "Settings",
+    "help": "Help & Support",
+    "upgrade_prompt": "Upgrade your plan"
+  },
+
+  "header": {
+    "greeting_morning": "Good morning, {name}.",
+    "greeting_afternoon": "Good afternoon, {name}.",
+    "greeting_evening": "Good evening, {name}.",
+    "search_placeholder": "Search projects, plugins…",
+    "notifications_label": "Notifications",
+    "notifications_empty": "You're all caught up.",
+    "notifications_new_singular": "{count} new notification",
+    "notifications_new_plural": "{count} new notifications",
+    "_notes": {
+      "greeting_morning": "[PLACEHOLDER] {name} is user display name. [GENDER HOOK] ES formal register may require gendered greeting adjectives.",
+      "notifications_new_singular": "[PLURAL] Use ICU plural rules for target locale. ES: una nueva notificación / {count} notificaciones nuevas. DE: {count} neue Benachrichtigung / {count} neue Benachrichtigungen.",
+      "notifications_new_plural": "[PLURAL] See notes on singular form above."
+    }
+  },
+
+  "projects": {
+    "section_title": "Your Projects",
+    "new_project_button": "New project",
+    "empty_state_title": "No projects yet",
+    "empty_state_body": "Create your first project and start building your sound.",
+    "empty_state_cta": "Create a project",
+    "sort_label": "Sort by",
+    "sort_option_recent": "Recently edited",
+    "sort_option_name": "Name (A–Z)",
+    "sort_option_created": "Date created",
+    "project_card_bpm_label": "BPM",
+    "project_card_key_label": "Key",
+    "project_card_tracks_singular": "{count} track",
+    "project_card_tracks_plural": "{count} tracks",
+    "project_card_last_edited": "Edited {time_ago}",
+    "project_card_open": "Open project",
+    "project_card_duplicate": "Duplicate",
+    "project_card_rename": "Rename",
+    "project_card_export": "Export",
+    "project_card_delete": "Delete",
+    "project_card_delete_confirm": "Delete \"{project_name}\"? This cannot be undone.",
+    "storage_used_label": "{used} of {total} used",
+    "storage_upgrade_prompt": "You're using {percent}% of your storage. {upgrade_link} for more.",
+    "storage_almost_full": "Storage almost full — upgrade plan",
+    "_notes": {
+      "project_card_bpm_label": "BPM = Beats Per Minute. Universal abbreviation in music production — do not translate. Keep as 'BPM' in all locales.",
+      "project_card_key_label": "Musical key indicator (e.g. 'A minor'). Short label — keep concise.",
+      "project_card_tracks_singular": "[PLURAL] {count} = integer. Apply ICU plural rules.",
+      "project_card_tracks_plural": "[PLURAL] See singular note.",
+      "project_card_last_edited": "[PLACEHOLDER] {time_ago} is a relative time string generated at runtime (e.g. '2 hours ago'). Relative time strings are localised separately by the date/time library.",
+      "project_card_delete_confirm": "[PLACEHOLDER] {project_name} is user-generated content — do not translate the placeholder. Quotation marks may adapt to locale typography conventions.",
+      "storage_used_label": "[PLACEHOLDER] {used} and {total} are formatted storage values (e.g. '18.3 GB'). Units handled separately.",
+      "storage_upgrade_prompt": "[PLACEHOLDER] {percent} is an integer. {upgrade_link} is an inline hyperlink. [EXPANSION RISK]"
+    }
+  },
+
+  "new_project_modal": {
+    "title": "New project",
+    "field_name_label": "Project name",
+    "field_name_placeholder": "Untitled project",
+    "field_bpm_label": "Tempo (BPM)",
+    "field_key_label": "Key",
+    "field_key_placeholder": "Select a key",
+    "field_time_signature_label": "Time signature",
+    "template_section_title": "Start from a template",
+    "template_blank": "Blank canvas",
+    "template_beatmaker": "Beatmaker",
+    "template_singer_songwriter": "Singer-songwriter",
+    "template_film_score": "Film score",
+    "template_sound_design": "Sound design",
+    "create_button": "Create project",
+    "cancel_button": "Cancel",
+    "_notes": {
+      "field_bpm_label": "BPM is the technical abbreviation — keep as-is. 'Tempo' may be localised.",
+      "template_singer_songwriter": "[EXPANSION RISK] Hyphenated compound. DE expansion expected.",
+      "template_film_score": "Film score = the musical score of a film, not a rating. Clarify for translators.",
+      "template_sound_design": "Recognised professional term. Anglicism preferred in ES and DE — confirm with Black Ice ontology."
+    }
+  },
+
+  "studio": {
+    "toolbar_play": "Play",
+    "toolbar_stop": "Stop",
+    "toolbar_record": "Record",
+    "toolbar_loop": "Loop",
+    "toolbar_metronome": "Metronome",
+    "toolbar_undo": "Undo",
+    "toolbar_redo": "Redo",
+    "toolbar_save": "Save",
+    "toolbar_save_status_saved": "All changes saved",
+    "toolbar_save_status_saving": "Saving…",
+    "toolbar_save_status_unsaved": "Unsaved changes",
+    "track_add_button": "Add track",
+    "track_type_midi": "MIDI track",
+    "track_type_audio": "Audio track",
+    "track_mute_label": "M",
+    "track_mute_tooltip": "Mute",
+    "track_solo_label": "S",
+    "track_solo_tooltip": "Solo",
+    "mixer_label": "Mixer",
+    "ai_composition_label": "AI Composition",
+    "ai_composition_hint": "Generate melodies, chord progressions, and drum patterns powered by ECHOCRAFT AI.",
+    "_notes": {
+      "track_type_midi": "MIDI is a technical acronym — do not translate. 'track' may be localised.",
+      "toolbar_save_status_saving": "Trailing ellipsis (…) indicates loading state. Preserve in all locales.",
+      "toolbar_save_status_saved": "[EXPANSION RISK] Status bar — limited display space. DE: 'Alle Änderungen gespeichert' is significantly longer.",
+      "ai_composition_label": "Must match the pillar name 'AI Composition' exactly. Cross-reference with onboarding.plan_features.melody_generator etc.",
+      "ai_composition_hint": "[EXPANSION RISK] Three feature names inline. Monitor German compound noun expansion."
+    }
+  }
+}

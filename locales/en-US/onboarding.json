@@ -1,0 +1,215 @@
+{
+  "_metadata": {
+    "product": "ECHOCRAFT",
+    "namespace": "onboarding",
+    "locale": "en-US",
+    "version": "1.0.0",
+    "generated": "2026-03-05"
+  },
+
+  "welcome": {
+    "headline": "Your Complete Music Creation Studio",
+    "subheadline": "Create, collaborate, and distribute your music with AI-powered tools and professional-grade instruments — all in the cloud.",
+    "cta_primary": "Start Creating Free",
+    "cta_secondary": "Watch Demo",
+    "legal_note": "By continuing, you agree to our {terms_link} and {privacy_link}.",
+    "_notes": {
+      "legal_note": "[PLACEHOLDER] {terms_link} and {privacy_link} are inline hyperlinks. Do not reorder. Link placement may shift in RTL languages."
+    }
+  },
+
+  "steps": {
+    "step_label": "Step {current} of {total}",
+    "next_button": "Continue",
+    "back_button": "Back",
+    "skip_button": "Skip for now",
+    "finish_button": "Start Creating Free",
+    "_notes": {
+      "step_label": "[PLACEHOLDER] {current} and {total} are integers. Ensure numeric formatting matches locale conventions.",
+      "finish_button": "Must match welcome.cta_primary exactly — single source of truth."
+    }
+  },
+
+  "signup": {
+    "page_title": "Create your account",
+    "page_subtitle": "Join {user_count} musicians and producers on ECHOCRAFT.",
+    "field_name_label": "Full name",
+    "field_name_placeholder": "Your name",
+    "field_email_label": "Email address",
+    "field_email_placeholder": "you@example.com",
+    "field_password_label": "Password",
+    "field_password_placeholder": "At least {min_length} characters",
+    "field_password_hint": "Use a mix of letters, numbers, and symbols.",
+    "field_password_strength_weak": "Weak",
+    "field_password_strength_fair": "Fair",
+    "field_password_strength_strong": "Strong",
+    "submit_button": "Get Started Free",
+    "divider_label": "or continue with",
+    "social_google": "Continue with Google",
+    "social_apple": "Continue with Apple",
+    "signin_prompt": "Already have an account? {signin_link}",
+    "_notes": {
+      "page_subtitle": "[PLACEHOLDER] {user_count} is a formatted integer. Do not translate the placeholder. [EXPANSION RISK]",
+      "field_password_placeholder": "[PLACEHOLDER] {min_length} is an integer.",
+      "signin_prompt": "[PLACEHOLDER] {signin_link} is an inline hyperlink. Do not move outside the sentence."
+    }
+  },
+
+  "signin": {
+    "page_title": "Welcome back",
+    "page_subtitle": "Sign in to continue to your studio.",
+    "field_email_label": "Email address",
+    "field_email_placeholder": "you@example.com",
+    "field_password_label": "Password",
+    "field_password_placeholder": "Your password",
+    "forgot_password_link": "Forgot password?",
+    "submit_button": "Sign In",
+    "divider_label": "or",
+    "social_google": "Continue with Google",
+    "social_apple": "Continue with Apple",
+    "signup_prompt": "New to ECHOCRAFT? {signup_link}",
+    "_notes": {
+      "signup_prompt": "[PLACEHOLDER] {signup_link} is an inline hyperlink. Brand name ECHOCRAFT is always uppercase — must not be translated or adapted.",
+      "submit_button": "Title case. Must match dashboard.nav.sign_in casing for consistency."
+    }
+  },
+
+  "profile_setup": {
+    "page_title": "Set up your profile",
+    "page_subtitle": "Tell us about yourself so we can personalise your experience.",
+    "field_display_name_label": "Display name",
+    "field_display_name_placeholder": "How other creators will see you",
+    "field_role_label": "I mainly work as a…",
+    "field_role_option_producer": "Producer",
+    "field_role_option_songwriter": "Songwriter",
+    "field_role_option_mixing_engineer": "Mixing engineer",
+    "field_role_option_sound_designer": "Sound designer",
+    "field_role_option_other": "Other",
+    "field_genre_label": "Primary genre",
+    "field_genre_placeholder": "e.g. Electronic, Hip-Hop, Ambient…",
+    "avatar_upload_label": "Profile photo",
+    "avatar_upload_button": "Upload photo",
+    "avatar_upload_hint": "JPG or PNG, max {max_size} MB.",
+    "_notes": {
+      "page_subtitle": "[EXPANSION RISK] Monitor carefully for German — compound noun structures extend this significantly.",
+      "field_role_label": "[EXPANSION RISK] The trailing ellipsis (…) is intentional punctuation. Preserve in translation if natural in target language.",
+      "field_role_option_mixing_engineer": "[GENDER HOOK] DE: Ingenieur/Ingenieurin requires gender agreement. Flag for German translators.",
+      "field_role_option_sound_designer": "[GENDER HOOK] Same gender consideration as mixing_engineer for German.",
+      "avatar_upload_hint": "[PLACEHOLDER] {max_size} is an integer."
+    }
+  },
+
+  "plan_selection": {
+    "page_title": "Choose Your Plan",
+    "page_subtitle": "From solo artists to full production teams, we have a plan that fits your creative needs.",
+    "audience_tab_creator": "Creator",
+    "audience_tab_creator_description": "For solo musicians and producers",
+    "audience_tab_studio": "Studio",
+    "audience_tab_studio_description": "For bands, producers, and teams",
+    "tier_label_starter": "Starter",
+    "tier_label_pro": "Pro",
+    "tier_label_max": "Max",
+    "tier_badge_popular": "Most Popular",
+    "pricing_per_month": "/month",
+    "pricing_per_user": "per user",
+    "cta_get_started": "Get Started",
+    "cta_start_trial": "Start Free Trial",
+    "cta_contact_sales": "Contact Sales",
+    "billing_free_trial_note": "Start your free trial — no credit card required.",
+    "_notes": {
+      "tier_label_starter": "Brand tier name. Do not translate — use as-is or discuss with localization lead.",
+      "tier_label_pro": "Brand tier name. Do not translate.",
+      "tier_label_max": "Brand tier name. Do not translate.",
+      "tier_badge_popular": "[EXPANSION RISK] Very short string in EN. High expansion risk in DE and ES.",
+      "pricing_per_month": "Displayed inline after price: '$29/month'. Currency symbol and formatting handled separately by the billing system.",
+      "pricing_per_user": "Displayed below per_month in Studio plans."
+    }
+  },
+
+  "plans": {
+    "creator_starter_name": "Creator Starter",
+    "creator_starter_tagline": "Make your first tracks",
+    "creator_pro_name": "Creator Pro",
+    "creator_pro_tagline": "Full songwriting workflow",
+    "creator_max_name": "Creator Max",
+    "creator_max_tagline": "No creative limits",
+    "studio_starter_name": "Studio Starter",
+    "studio_starter_tagline": "Create together",
+    "studio_pro_name": "Studio Pro",
+    "studio_pro_tagline": "Collaborative production",
+    "studio_max_name": "Studio Max",
+    "studio_max_tagline": "Professional environment",
+    "_notes": {
+      "creator_starter_name": "[EXPANSION RISK] Plan names are brand identifiers. Tier labels (Starter, Pro, Max) must not be translated. Audience labels (Creator, Studio) may be localised.",
+      "creator_pro_tagline": "[EXPANSION RISK] Short taglines. DE expansion expected: 'Full songwriting workflow' → 'Vollständiger Songwriting-Workflow'."
+    }
+  },
+
+  "plan_features": {
+    "midi_editor": "MIDI Editor",
+    "piano_roll": "Piano Roll",
+    "pattern_sequencer": "Pattern Sequencer",
+    "arrangement_timeline": "Arrangement Timeline",
+    "multitrack_recording_8": "Multitrack Recording (8 tracks)",
+    "multitrack_recording_32": "Multitrack Recording (32 tracks)",
+    "multitrack_recording_64": "Multitrack Recording (64 tracks)",
+    "audio_comping": "Audio Comping",
+    "punch_in_recording": "Punch-In Recording",
+    "virtual_instruments_10": "10 Virtual Instruments",
+    "virtual_instruments_40": "40 Virtual Instruments",
+    "unlimited_instruments": "Unlimited Instruments",
+    "sample_library_20gb": "Sample Library (20 GB)",
+    "sample_library_100gb": "Sample Library (100 GB)",
+    "sample_library_200gb": "Sample Library (200 GB)",
+    "effects_rack": "Effects Rack",
+    "eq_compression": "EQ & Compression",
+    "mastering_chain": "Mastering Chain",
+    "loudness_analyzer": "Loudness Analyzer",
+    "melody_generator": "Melody Generator",
+    "chord_progression_generator": "Chord Progression Generator",
+    "drum_pattern_generator": "Drum Pattern Generator",
+    "style_transfer": "Style Transfer",
+    "export_mp3": "Export MP3",
+    "export_wav_flac": "Export WAV/FLAC",
+    "one_click_distribution": "One-Click Distribution",
+    "track_metadata_editor": "Track Metadata Editor",
+    "shared_projects": "Shared Projects",
+    "real_time_jam_sessions": "Real-Time Jam Sessions",
+    "unlimited_jam_sessions": "Unlimited Jam Sessions",
+    "version_history": "Version History",
+    "comments_markers": "Comments & Markers",
+    "interactive_lessons": "Interactive Lessons",
+    "chord_explorer": "Chord Explorer",
+    "scale_assistant": "Scale Assistant",
+    "feature_includes_starter": "All Creator Starter features",
+    "feature_includes_pro": "Everything in Starter, plus:",
+    "feature_includes_studio_starter": "All Creator Starter features",
+    "feature_includes_studio_pro": "Everything in Studio Starter, plus:",
+    "feature_includes_creator_pro": "All Creator Pro features",
+    "feature_includes_creator_max": "All Creator Max features",
+    "feature_includes_studio_pro_all": "Everything in Studio Pro, plus:",
+    "_notes": {
+      "midi_editor": "DAW technical term. Do not translate literally in DE/ES — preserve anglicism or consult Black Ice ontology for approved term.",
+      "piano_roll": "DAW technical term. Anglicism preferred in both ES-ES and DE.",
+      "pattern_sequencer": "DAW technical term. Check Black Ice for approved ES/DE terms.",
+      "punch_in_recording": "DAW technical term. Anglicism likely preferred. Confirm with ontology.",
+      "style_transfer": "AI feature term. Do not translate — use approved term from Black Ice AI Composition ontology.",
+      "real_time_jam_sessions": "[EXPANSION RISK] High expansion in DE: 'Echtzeit-Jam-Sessions'.",
+      "one_click_distribution": "[EXPANSION RISK] DE: 'Ein-Klick-Distribution' — monitor UI truncation."
+    }
+  },
+
+  "confirmation": {
+    "page_title": "You're all set, {name}!",
+    "page_subtitle": "Your studio is ready. Let's create something.",
+    "checklist_account": "Account created",
+    "checklist_profile": "Profile configured",
+    "checklist_plan": "{plan_name} plan activated",
+    "cta_primary": "Start Creating Free",
+    "cta_secondary": "Take a quick tour",
+    "_notes": {
+      "page_title": "[PLACEHOLDER] {name} is the user's display name. [GENDER HOOK] DE/ES may require gender-inflected adjectives if sentence is expanded. Flag for review.",
+      "checklist_plan": "[PLACEHOLDER] {plan_name} inserts a localised plan name (e.g. 'Creator Pro')."
+    }
+  }
+}
