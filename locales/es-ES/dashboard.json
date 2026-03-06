@@ -1,0 +1,137 @@
+{
+  "_metadata": {
+    "product": "ECHOCRAFT",
+    "namespace": "dashboard",
+    "locale": "es-ES",
+    "version": "1.0.0",
+    "generated": "2026-03-06"
+  },
+
+  "nav": {
+    "projects": "Proyectos",
+    "instruments": "Instrumentos",
+    "sample_library": "Librería de samples",
+    "collaboration": "Colaboración",
+    "melody_generator": "Generador de melodías",
+    "chord_progression": "Progresiones de acordes",
+    "ai_composition": "Composición con IA",
+    "features": "Funciones",
+    "pricing": "Precios",
+    "blog": "Blog",
+    "download": "Descargar",
+    "sign_in": "Iniciar sesión",
+    "get_started": "Empezar gratis",
+    "settings": "Ajustes",
+    "help": "Ayuda y soporte",
+    "upgrade_prompt": "Amplía tu plan"
+  },
+
+  "header": {
+    "greeting_morning": "Buenos días, {name}.",
+    "greeting_afternoon": "Buenas tardes, {name}.",
+    "greeting_evening": "Buenas noches, {name}.",
+    "search_placeholder": "Buscar proyectos, plugins…",
+    "notifications_label": "Notificaciones",
+    "notifications_empty": "Estás al día.",
+    "notifications_new_singular": "{count} notificación nueva",
+    "notifications_new_plural": "{count} notificaciones nuevas",
+    "_notes": {
+      "greeting_morning": "[PLACEHOLDER] {name} is the user display name. Spanish greetings (Buenos días/tardes/noches) are gender-neutral — no agreement issue.",
+      "notifications_new_singular": "[PLURAL] ICU plural rules applied. Singular: '{count} notificación nueva'. Plural: '{count} notificaciones nuevas'.",
+      "notifications_new_plural": "[PLURAL] See notes on singular form above."
+    }
+  },
+
+  "projects": {
+    "section_title": "Tus proyectos",
+    "new_project_button": "Nuevo proyecto",
+    "empty_state_title": "Aún no tienes proyectos",
+    "empty_state_body": "Crea tu primer proyecto y empieza a construir tu sonido.",
+    "empty_state_cta": "Crear un proyecto",
+    "sort_label": "Ordenar por",
+    "sort_option_recent": "Editados recientemente",
+    "sort_option_name": "Nombre (A–Z)",
+    "sort_option_created": "Fecha de creación",
+    "project_card_bpm_label": "BPM",
+    "project_card_key_label": "Clave",
+    "project_card_tracks_singular": "{count} pista",
+    "project_card_tracks_plural": "{count} pistas",
+    "project_card_last_edited": "Editado {time_ago}",
+    "project_card_open": "Abrir proyecto",
+    "project_card_duplicate": "Duplicar",
+    "project_card_rename": "Cambiar nombre",
+    "project_card_export": "Exportar",
+    "project_card_delete": "Eliminar",
+    "project_card_delete_confirm": "¿Eliminar \"{project_name}\"? Esta acción no se puede deshacer.",
+    "storage_used_label": "{used} de {total} usados",
+    "storage_upgrade_prompt": "Usas el {percent} % de tu almacenamiento. {upgrade_link} para ampliar.",
+    "storage_almost_full": "Almacenamiento casi lleno — amplía el plan",
+    "_notes": {
+      "project_card_bpm_label": "BPM is a universal abbreviation — kept as-is per en-US notes.",
+      "project_card_key_label": "Transcreation decision: 'Key' rendered as 'Clave' (musical key in Spain usage). 'Tonalidad' is more technically precise but too long for a tight badge label (9 chars vs 5).",
+      "project_card_tracks_singular": "[PLURAL] {count} = integer. ICU plural rules applied.",
+      "project_card_tracks_plural": "[PLURAL] See singular note.",
+      "project_card_last_edited": "[PLACEHOLDER] {time_ago} is a relative time string generated at runtime.",
+      "project_card_delete_confirm": "[PLACEHOLDER] {project_name} is user-generated content. Quotation marks kept as standard marks per es-ES locale conventions.",
+      "storage_used_label": "[PLACEHOLDER] {used} and {total} are formatted storage values.",
+      "storage_upgrade_prompt": "[PLACEHOLDER] {percent} is an integer; space before % per es-ES convention. {upgrade_link} is an inline hyperlink. [EXPANSION RISK] Monitor layout."
+    }
+  },
+
+  "new_project_modal": {
+    "title": "Nuevo proyecto",
+    "field_name_label": "Nombre del proyecto",
+    "field_name_placeholder": "Proyecto sin nombre",
+    "field_bpm_label": "Tempo (BPM)",
+    "field_key_label": "Clave",
+    "field_key_placeholder": "Selecciona una clave",
+    "field_time_signature_label": "Compás",
+    "template_section_title": "Empieza desde una plantilla",
+    "template_blank": "Lienzo en blanco",
+    "template_beatmaker": "Beatmaker",
+    "template_singer_songwriter": "Cantautor",
+    "template_film_score": "Banda sonora",
+    "template_sound_design": "Sound design",
+    "create_button": "Crear proyecto",
+    "cancel_button": "Cancelar",
+    "_notes": {
+      "field_bpm_label": "BPM kept as-is (universal abbreviation). 'Tempo' localised.",
+      "template_beatmaker": "Anglicism kept — 'Beatmaker' is widely understood in Spain music production community.",
+      "template_singer_songwriter": "Transcreation: 'Singer-songwriter' → 'Cantautor' (established Spanish term, shorter than EN source).",
+      "template_film_score": "Transcreation: 'Film score' → 'Banda sonora' (standard Spanish term for the musical score of a film, not a rating).",
+      "template_sound_design": "[REVIEW] En-US notes state anglicism preferred in ES. 'Sound design' kept in English. Confirm approved es-ES term with localization lead — not present in ontology."
+    }
+  },
+
+  "studio": {
+    "toolbar_play": "Reproducir",
+    "toolbar_stop": "Detener",
+    "toolbar_record": "Grabar",
+    "toolbar_loop": "Loop",
+    "toolbar_metronome": "Metrónomo",
+    "toolbar_undo": "Deshacer",
+    "toolbar_redo": "Rehacer",
+    "toolbar_save": "Guardar",
+    "toolbar_save_status_saved": "Todo guardado",
+    "toolbar_save_status_saving": "Guardando…",
+    "toolbar_save_status_unsaved": "Cambios sin guardar",
+    "track_add_button": "Añadir pista",
+    "track_type_midi": "Pista MIDI",
+    "track_type_audio": "Pista de audio",
+    "track_mute_label": "M",
+    "track_mute_tooltip": "Silenciar",
+    "track_solo_label": "S",
+    "track_solo_tooltip": "Solo",
+    "mixer_label": "Mezclador",
+    "ai_composition_label": "Composición con IA",
+    "ai_composition_hint": "Genera melodías, progresiones de acordes y patrones de batería con la IA de ECHOCRAFT. Tú decides qué se queda.",
+    "_notes": {
+      "toolbar_loop": "Anglicism kept — 'Loop' is universally understood in Spain music production contexts. 'Bucle' was considered but 'Loop' is standard DAW terminology.",
+      "toolbar_save_status_saved": "Transcreation: 'All changes saved' → 'Todo guardado' (13 chars vs 17 chars — shorter than EN, fits status bar well).",
+      "toolbar_save_status_saving": "Trailing ellipsis (…) preserved to indicate loading state.",
+      "track_type_midi": "MIDI is a technical acronym — kept as-is per ontology. 'Pista' used for 'track' per es-ES terminology rules.",
+      "ai_composition_label": "Must match nav.ai_composition exactly — 'Composición con IA'.",
+      "ai_composition_hint": "Transcreation decision: added 'Tú decides qué se queda' as required by es-ES market guide — AI transparency rule mandates a control/agency cue whenever AI is mentioned. Source intent (present AI capabilities) is preserved; agency cue reinforces user authorship per es-ES voice DNA."
+    }
+  }
+}
