@@ -2,10 +2,10 @@
 
 ## Ontology
 The terminology ontology for this project lives at:
-~/Desktop/echocraft-course/echocraft-ontology/
+~/echocraft-ontology/
 
 Before any localization task, pull the latest version:
-git -C ~/Desktop/echocraft-course/echocraft-ontology pull
+git -C ~/echocraft-ontology pull
 
 Then read the full ontology:
 - classes/README.md — concept class definitions
@@ -74,3 +74,29 @@ naturally, flag it with [LENGTH] in _notes for design review.
 - Keep all _notes entries in English
 - After completing all files, provide a full report of every
   terminology decision made and every string flagged for review
+
+## Reporting
+After completing any localization task, always save a report 
+as transcreation-report-{locale}.md in the root of this repo.
+
+The report must include:
+- Ontology version pulled (date of last commit)
+- A table of every terminology decision made, with columns:
+  Source Term | Target Term | Ontology File | Decision
+- A list of every string flagged with [REVIEW] and why
+- A list of every string flagged with [LENGTH] and the 
+  recommended design action
+- A step-by-step summary of actions taken in the session
+
+## Committing to GitHub
+After saving the transcreation report, ask the user:
+
+"All files are ready. Do you want me to commit and push 
+everything to GitHub now? (yes/no)"
+
+If yes, run:
+git add .
+git commit -m "feat: add {locale} transcreated string files and report"
+git push
+
+If no, let the user know they can commit manually when ready.
