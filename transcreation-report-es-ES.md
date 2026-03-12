@@ -1,19 +1,16 @@
 # Transcreation Report — es-ES
 
-**Date**: 2026-03-07 (reviewed and updated; files originally produced 2026-03-06)
-**Locale**: Spanish (Spain) — `es-ES`
-**Files produced**:
-- `locales/es-ES/dashboard.json`
-- `locales/es-ES/errors.json`
-- `locales/es-ES/onboarding.json`
-- `locales/es-ES/validation.json`
+**Date**: 2026-03-12
+**Locale**: Spanish (Spain) — es-ES
+**Files produced**: `locales/es-ES/onboarding.json`, `locales/es-ES/errors.json`, `locales/es-ES/dashboard.json`, `locales/es-ES/validation.json`
 
 ---
 
 ## Ontology Version
 
-Last commit: `207b4002d5df14cccc59540c9c268b49a43ec54a` — 2026-02-27
-Status at session start: **Already up to date.**
+- **Commit**: `207b4002d5df14cccc59540c9c268b49a43ec54a`
+- **Date of last commit**: 2026-02-27
+- **Status at pull**: Already up to date
 
 ---
 
@@ -21,83 +18,81 @@ Status at session start: **Already up to date.**
 
 | Source Term | Target Term | Ontology File | Decision |
 |---|---|---|---|
-| MIDI Editor | Editor MIDI | feat_00000001 | Ontology-approved term. Capitalised for list display. |
-| Pattern Sequencer | Secuenciador por patrones | feat_00000002 | Ontology-approved term. Capitalised for display. |
-| Virtual Instrument(s) | instrumento(s) virtual(es) | feat_00000003 | Ontology-approved term. Count prepended as per source string pattern. |
-| Export MP3 | Exportar en MP3 | feat_00000005 | Ontology term 'exportar en mp3' — MP3 capitalised for display consistency. |
-| Piano Roll | Piano Roll | feat_00000006 | Ontology-approved anglicism. Kept as-is. |
-| Arrangement Timeline | Línea de arreglos | feat_00000007 | Ontology-approved term. Capitalised for display. |
-| Sample Library | Librería de samples | feat_00000008 | Ontology-approved term. Capitalised for display. |
-| Multitrack Recording | Grabación multipista | feat_00000009 | Ontology-approved term. Track count appended per source pattern. |
-| Effects Rack | Rack de efectos | feat_00000010 | Ontology-approved term. Capitalised for display. |
-| Melody Generator | Generador de melodías | feat_00000011 | Ontology-approved term. Capitalised for display. |
-| Mastering Chain | Cadena de mástering | feat_00000012 | Ontology-approved term. Note: ontology marks es-ES availability as `not_available` — see flags below. |
-| Style Transfer | Transferencia de estilos | feat_00000013 | Ontology-approved term. Note: ontology marks es-ES availability as `planned`. |
-| Chord Progression Generator | Generador de progresiones de acordes | feat_00000014 | Ontology-approved term. Capitalised for display. |
-| Export WAV/FLAC | Exportar en WAV/FLAC | feat_00000015 | Ontology term 'exportar en wav/flac' — WAV/FLAC capitalised for display consistency. |
-| Creator (Plan Group) | Creator | plan_00000001 | Ontology-approved, status: approved. Not translated. |
-| Creator Starter | Creator Starter | plan_00000002 | Ontology-approved, status: approved. Not translated. |
-| Creator Pro | Creator Pro | plan_00000003 | Brand plan name. Not translated per policy. |
-| Creator Max | Creator Max | plan_00000004 | Brand plan name. Not translated per policy. |
-| track | pista | markets/es-es.md | Standard es-ES market term. |
-| mix / Mixer | mezcla / Mezclador | markets/es-es.md | 'Mezclador' used for the UI panel label. |
-| AI | IA | markets/es-es.md | Standard Spanish abbreviation. Used throughout. |
-| cloud | la nube | markets/es-es.md | Standard es-ES market term. |
-| sound design | Sound design | markets/es-es.md (note) | Source note flags anglicism preferred. Not confirmed in ontology — flagged [REVIEW]. |
-| Jam Sessions | sesiones jam | markets/es-es.md | Anglicism standard in es-ES music production contexts. |
-| Loudness Analyzer | Analizador de sonoridad | — (not in ontology) | 'Sonoridad' is the ITU/EBU standard Spanish term for loudness. Flagged [REVIEW]. |
-| Drum Pattern Generator | Generador de patrones de batería | — (not in ontology) | Direct, natural es-ES rendering. Flagged [REVIEW]. |
-| Audio Comping | Comping de audio | — (not in ontology) | Partial anglicism common in es-ES DAW contexts. Flagged [REVIEW]. |
-| Punch-In Recording | Grabación punch-in | — (not in ontology) | Anglicism retained per source note guidance. Flagged [REVIEW]. |
+| MIDI Editor | editor MIDI | feat_00000001 | Approved ontology term used (status: pending) |
+| Pattern Sequencer | secuenciador por patrones | feat_00000002 | Approved ontology term used (status: pending) |
+| Virtual Instruments | instrumentos virtuales | feat_00000003 | Approved ontology term used (status: pending) |
+| Export MP3 | exportar en MP3 | feat_00000005 | Approved ontology term used (status: pending) |
+| Piano Roll | Piano Roll | feat_00000006 | Anglicism kept — ontology approved (status: pending) |
+| Arrangement Timeline | línea de arreglos | feat_00000007 | Approved ontology term used (status: pending) |
+| Sample Library | librería de samples | feat_00000008 | Approved ontology term used (status: pending) |
+| Multitrack Recording | grabación multipista | feat_00000009 | Approved ontology term used (status: pending) |
+| Effects Rack | rack de efectos | feat_00000010 | Approved ontology term used (status: pending) |
+| Melody Generator | generador de melodías | feat_00000011 | Approved ontology term used (status: pending) |
+| Mastering Chain | cadena de mástering | feat_00000012 | Ontology term used (status: pending) — availability: not_available in es-es; see flags below |
+| Style Transfer | transferencia de estilos | feat_00000013 | Ontology term used (status: pending) — availability: planned in es-es; see flags below |
+| Chord Progression Generator | generador de progresiones de acordes | feat_00000014 | Approved ontology term used (status: pending) |
+| Export WAV/FLAC | exportar en WAV/FLAC | feat_00000015 | Approved ontology term used (status: pending) |
+| Creator (Plan Group) | Creator | plan_00000001 | Not translated — ontology approved (status: approved) |
+| Creator Starter | Creator Starter | plan_00000002 | Not translated — ontology approved (status: approved) |
+| Creator Pro | Creator Pro | plan_00000003 | Not translated — ontology approved (status: pending) |
+| Creator Max | Creator Max | plan_00000004 | Not translated — ontology approved (status: pending) |
+| track | pista | markets/es-es.md | Market-preferred term |
+| mix | mezcla | markets/es-es.md | Market-preferred term |
+| cloud | la nube | markets/es-es.md | Market-preferred term |
+| collaborate | colaborar | markets/es-es.md | Market-preferred term |
+| AI | IA | markets/es-es.md | Market-preferred abbreviation |
+| plugin | plugin | markets/es-es.md | Acceptable anglicism per market guide |
+| Mixer | Mezclador | — | Standard DAW translation; 'mixer' avoided per market guide (prefer Spanish in UI labels where natural) |
+| Time signature | Compás | — | Standard music theory term in Spanish |
+| Sound Design | Diseño de sonido | — | Localised (see REVIEW flag) |
+| Loop | Loop | — | Anglicism maintained (see REVIEW flag) |
 
 ---
 
 ## Strings Flagged [REVIEW]
 
-| Key | String | Reason |
+| String Key | File | Reason |
 |---|---|---|
-| `dashboard.new_project_modal.template_sound_design` | Sound design | Anglicism preferred per source note, but term not confirmed in ontology. Confirm with localization lead. |
-| `dashboard.new_project_modal.template_singer_songwriter` | Cantautor | Masculine default used. If the UI supports gender-adaptive content, expose feminine variant (Cantautora). |
-| `onboarding.signin.page_title` | Bienvenido de nuevo | [GENDER HOOK] Masculine default. Consider 'Bienvenido/a de nuevo' if the platform supports gender-adaptive strings. |
-| `onboarding.profile_setup.field_role_option_producer` | Productor | [GENDER HOOK] All four role options (Productor, Compositor, Ingeniero de mezclas, Diseñador de sonido) use masculine default. Recommend exposing feminine variants (Productora, Compositora, etc.) if the platform supports it. |
-| `onboarding.plan_features.audio_comping` | Comping de audio | Term not in ontology. Confirm with localization lead. |
-| `onboarding.plan_features.punch_in_recording` | Grabación punch-in | Term not in ontology. Source note flags anglicism likely preferred; confirm. |
-| `onboarding.plan_features.loudness_analyzer` | Analizador de sonoridad | Term not in ontology. 'Sonoridad' is the standard ITU/EBU Spanish translation of 'loudness'. Confirm with localization lead. |
-| `onboarding.plan_features.drum_pattern_generator` | Generador de patrones de batería | Term not in ontology. Natural es-ES rendering. Confirm with localization lead. |
-| `onboarding.plan_features.mastering_chain` | Cadena de mástering | Ontology term confirmed (feat_00000012), but ontology marks es-ES availability as `not_available`. Flag for product team — string is provided for UI completeness. |
-| `onboarding.plan_features.style_transfer` | Transferencia de estilos | Ontology term confirmed (feat_00000013), but ontology marks es-ES availability as `planned`. Flag for product team. |
-| `onboarding.plan_features.track_metadata_editor` | Editor de metadatos de pistas | Term not in ontology. Natural es-ES rendering used. Confirm with localization lead. |
-| `onboarding.plan_features.chord_explorer` | Explorador de acordes | Term not in ontology. Natural es-ES rendering used. Confirm with localization lead. |
-| `onboarding.plan_features.scale_assistant` | Asistente de escalas | Term not in ontology. Natural es-ES rendering used. Confirm with localization lead. |
+| `plan_features.audio_comping` | onboarding.json | "Audio Comping" not found in ontology. Anglicism maintained. Requires decision: keep anglicism or propose Spanish equivalent (e.g., "toma compuesta"). |
+| `plan_features.punch_in_recording` | onboarding.json | "Punch-In Recording" not found in ontology. Anglicism maintained. Requires decision from localization lead. |
+| `plan_features.loudness_analyzer` | onboarding.json | Not in ontology. Proposed "Analizador de loudness" (tech anglicism common in Spanish audio engineering). Alternative: "Analizador de nivel". Requires review. |
+| `plan_features.drum_pattern_generator` | onboarding.json | Not in ontology. Proposed "generador de patrones de batería". Requires review. |
+| `plan_features.chord_explorer` | onboarding.json | Not in ontology. Proposed "Explorador de acordes". Requires review. |
+| `plan_features.scale_assistant` | onboarding.json | Not in ontology. Proposed "Asistente de escalas". Requires review. |
+| `plan_features.real_time_jam_sessions` / `unlimited_jam_sessions` | onboarding.json | "Jam sessions" not in ontology. Kept as established anglicism in Spanish music culture. Requires confirmation. |
+| `new_project_modal.template_sound_design` | dashboard.json | Ontology notes "anglicism preferred in ES". Localized as "Diseño de sonido" for high-level template label — requires confirmation from localization lead. |
+| `studio.toolbar_loop` | dashboard.json | "Loop" not in ontology. Kept as anglicism. Requires confirmation. |
+| `plan_features.mastering_chain` | onboarding.json | Feature availability marked `not_available` in es-es (feat_00000012). String is transcreated ("cadena de mástering") but product team should confirm whether to display or suppress this feature row in ES market. |
+| `plan_features.style_transfer` | onboarding.json | Feature availability marked `planned` in es-es (feat_00000013). String is transcreated ("transferencia de estilos") but product team should confirm display treatment (e.g., "próximamente"). |
 
 ---
 
 ## Strings Flagged [LENGTH]
 
-The following strings exceeded or approached their length targets. Recommended actions noted.
-
-| Key | es-ES String | Char Count | EN Char Count | Note |
-|---|---|---|---|---|
-| `dashboard.projects.storage_almost_full` | Almacenamiento casi lleno — mejora tu plan | 42 | 34 | Slight expansion — acceptable for status bar. Monitor on mobile. |
-| `onboarding.plan_selection.tier_badge_popular` | El más popular | 14 | 12 | Expansion within badge tolerance. |
-| `onboarding.plans.creator_pro_tagline` | Flujo completo de composición | 29 | 24 | Shortened from literal to manage expansion risk. Meaning preserved. |
-| `dashboard.studio.ai_composition_hint` | Genera melodías, progresiones de acordes y patrones de batería con la IA de ECHOCRAFT. Tú decides qué usas. | 105 | 88 | Agency cue added per market guide. Monitor body copy container. |
-| `onboarding.plan_features.chord_progression_generator` | Generador de progresiones de acordes | 36 | 27 | 33% expansion. Monitor in feature list UI. Recommend design review. |
-| `onboarding.plan_features.feature_includes_starter` | Todas las funciones de Creator Starter | 38 | 28 | 36% expansion. Monitor in feature checklist UI. |
-| `onboarding.plan_features.feature_includes_creator_pro` | Todas las funciones de Creator Pro | 34 | 24 | 42% expansion. Monitor in feature checklist UI. |
-| `onboarding.plan_features.feature_includes_creator_max` | Todas las funciones de Creator Max | 34 | 24 | 42% expansion. Monitor in feature checklist UI. |
+| String Key | File | Issue | Recommended Action |
+|---|---|---|---|
+| `plan_selection.tier_badge_popular` | onboarding.json | EN: "Most Popular" (12 chars) → ES: "Más popular" (11 chars). Fits well. No action needed. | — |
+| `plans.creator_pro_tagline` | onboarding.json | EN: "Full songwriting workflow" → ES: "Flujo de trabajo completo para componer" (39 chars). Moderate expansion. | Design: verify card tagline container allows ~40 chars. |
+| `studio.ai_composition_hint` | dashboard.json | Added agency cue "Tú decides qué se queda" per es-ES market guide AI transparency rule. Full string longer than EN source. | Design: verify hint text area accommodates the extra sentence. |
+| `studio.toolbar_save_status_saved` | dashboard.json | EN: "All changes saved" → ES: "Todo guardado" (14 chars). Shorter than EN — no issue. | — |
+| `plan_selection.cta_contact_sales` | onboarding.json | EN: "Contact Sales" (13 chars) → ES: "Contactar con ventas" (20 chars). | Design: verify button width in plan selection grid. |
+| `one_click_distribution` | onboarding.json | EN: "One-Click Distribution" → ES: "Distribución con un clic" (24 chars). | Design: verify feature list item width. |
 
 ---
 
-## Step-by-Step Summary
+## Step-by-Step Summary of Actions
 
-1. **Pulled ontology** — `git -C ~/echocraft-ontology pull`. Already up to date. Last commit: `207b4002` (2026-02-27).
-2. **Read ontology** — `classes/README.md`, `markets/es-es.md`, `relationships/README.md`, and all 18 terminology files (15 feature files + 3 plan files). No feat_00000004 file found (ID gap in sequence — not referenced in relationships graph).
-3. **Read source files** — all four `locales/en-US/*.json` files read in full.
-4. **Applied es-ES market guide** — voice (cercana, experta, motivadora, clara), tú/vosotros pronouns, Spain-specific vocabulary (ordenador, móvil, archivo), ¿? / ¡! punctuation, imperative verbs for UI actions.
-5. **Applied ontology terminology** — 14 ontology-approved terms used exactly as specified. 4 terms not in ontology were flagged [REVIEW].
-6. **Applied AI transparency rule** — wherever AI features are mentioned, a control/agency cue was added or preserved (e.g., `ai_composition_hint` ends with "Tú decides qué usas.").
-7. **Applied character budget discipline** — button text kept to 2–3 words; status strings shortened where needed; no string sacrificed meaning for length without flagging.
-8. **Wrote four locale files** — `dashboard.json`, `errors.json`, `onboarding.json`, `validation.json` under `locales/es-ES/`.
-9. **Saved this report** — `transcreation-report-es-ES.md` in repo root.
-10. **Reviewed on 2026-03-07** — Pulled ontology again (still up to date). Reviewed all four es-ES files against source. Added missing [REVIEW] notes for `track_metadata_editor`, `chord_explorer`, `scale_assistant` in `onboarding.json`. Added missing [LENGTH] entries for `chord_progression_generator` and `feature_includes_*` strings. Report updated accordingly.
+1. **Pulled ontology**: `git -C ~/echocraft-ontology pull` — already up to date (commit `207b4002`, 2026-02-27).
+2. **Read ontology**: `classes/README.md`, `markets/es-es.md`, `terminology/README.md`, all 18 terminology files, `relationships/README.md`.
+3. **Read source files**: All four en-US string files (`onboarding.json`, `errors.json`, `dashboard.json`, `validation.json`).
+4. **Applied market guide (es-ES)**:
+   - Voice: cercana, experta, motivadora, clara.
+   - Pronouns: tú/vosotros (no usted/ustedes except legal).
+   - Buttons: imperative verb + object (Crear, Grabar, Añadir, Exportar…).
+   - Consistency: pista, mezcla, exportar, la nube, IA throughout.
+   - AI framing: "asistente / copiloto creativo"; every AI mention includes an authorship/control cue ("Tú decides qué se queda").
+5. **Applied ontology terminology**: Used approved es-ES terms for all 14 features and 4 plan names found in the ontology. Flagged all terms not in the ontology with [REVIEW].
+6. **Handled gender**: Used slash notation (Productor/a, Compositor/a, Ingeniero/a, Diseñador/a, Cantautor/a) for role selectors and template labels where gender agreement is required. Used gender-neutral constructions for headlines where possible (e.g., "¡Todo listo, {name}!" instead of "¡Listo, {name}!").
+7. **Handled product availability flags**: Noted `mastering_chain` (not_available) and `style_transfer` (planned) in _notes and in this report for product team coordination.
+8. **Created files**: `locales/es-ES/onboarding.json`, `locales/es-ES/errors.json`, `locales/es-ES/dashboard.json`, `locales/es-ES/validation.json`.
+9. **Saved this report** as `transcreation-report-es-ES.md` in repo root.

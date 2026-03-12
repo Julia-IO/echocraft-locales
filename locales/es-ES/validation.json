@@ -1,0 +1,21 @@
+{
+  "_metadata": {
+    "product": "ECHOCRAFT",
+    "namespace": "validation",
+    "locale": "es-ES",
+    "version": "1.0.0",
+    "generated": "2026-03-12",
+    "scope_note": "Espacio de nombres compartido. Mensajes de validación de campos usados en formularios de onboarding y modales del dashboard. No duplicar en otros espacios de nombres."
+  },
+
+  "display_name_too_short": "El nombre visible debe tener al menos {min_length} caracteres.",
+  "display_name_too_long": "El nombre visible no puede superar los {max_length} caracteres.",
+  "project_name_empty": "El nombre del proyecto no puede estar vacío.",
+  "bpm_out_of_range": "El tempo debe estar entre {min} y {max} BPM.",
+
+  "_notes": {
+    "display_name_too_short": "[PLACEHOLDER] {min_length} es un entero.",
+    "display_name_too_long": "[PLACEHOLDER] {max_length} es un entero.",
+    "bpm_out_of_range": "[PLACEHOLDER] {min} y {max} son enteros. BPM es una abreviatura universal — no traducir."
+  }
+}
