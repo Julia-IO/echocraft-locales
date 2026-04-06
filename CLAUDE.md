@@ -2,12 +2,9 @@
 
 ## Ontology
 The terminology ontology for this project lives at:
-~/echocraft-ontology/
+https://raw.githubusercontent.com/Julia-IO/echocraft-test/main/ontology/
 
-Before any localization task, pull the latest version:
-git -C ~/echocraft-ontology pull
-
-Then read the full ontology:
+Before any localization task, read the full ontology:
 - classes/README.md — concept class definitions
 - markets/ — one file per market with locale guidelines  
 - terminology/ — one file per concept with approved terms
