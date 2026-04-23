@@ -1,0 +1,254 @@
+{
+  "_metadata": {
+    "product": "ECHOCRAFT",
+    "namespace": "onboarding",
+    "locale": "es-ES",
+    "version": "1.0.0",
+    "generated": "2026-04-23"
+  },
+
+  "welcome": {
+    "headline": "Tu estudio completo para crear música en la nube",
+    "subheadline": "Crea, colabora y publica tu música con herramientas de IA e instrumentos de calidad profesional.",
+    "cta_primary": "Empieza a crear gratis",
+    "cta_secondary": "Ver demo",
+    "legal_note": "Al continuar, aceptas nuestros {terms_link} y {privacy_link}.",
+    "_notes": {
+      "headline": "Uses the es-ES brand tagline from markets/es-es.md ('Tu estudio completo para crear música en la nube') as it directly matches the EN intent and is already validated market copy.",
+      "subheadline": "Transcreated from the market positioning statement. 'distribuir' → 'publicar' per market file ('publish/distribute = publicar / distribuir'). 'IA' used for AI per es-ES conventions. 'la nube' omitted from subheadline to avoid repetition with headline.",
+      "cta_primary": "Imperative form per es-ES microcopy rules. Must match steps.finish_button and confirmation.cta_primary exactly.",
+      "legal_note": "[PLACEHOLDER] {terms_link} and {privacy_link} are inline hyperlinks. 'nuestros' is masculine plural agreeing with 'Términos' (the expected link label) — link text gender should be confirmed at render time."
+    }
+  },
+
+  "steps": {
+    "step_label": "Paso {current} de {total}",
+    "next_button": "Continuar",
+    "back_button": "Atrás",
+    "skip_button": "Omitir por ahora",
+    "finish_button": "Empieza a crear gratis",
+    "_notes": {
+      "step_label": "[PLACEHOLDER] {current} and {total} are integers. Numeric formatting follows es-ES conventions (no special formatting for integers).",
+      "finish_button": "Must match welcome.cta_primary exactly — single source of truth. Value: 'Empieza a crear gratis'."
+    }
+  },
+
+  "signup": {
+    "page_title": "Crea tu cuenta",
+    "page_subtitle": "Únete a {user_count} músicos y productores en ECHOCRAFT.",
+    "field_name_label": "Nombre completo",
+    "field_name_placeholder": "Tu nombre",
+    "field_email_label": "Correo electrónico",
+    "field_email_placeholder": "tu@ejemplo.com",
+    "field_password_label": "Contraseña",
+    "field_password_placeholder": "Al menos {min_length} caracteres",
+    "field_password_hint": "Usa una combinación de letras, números y símbolos.",
+    "field_password_strength_weak": "Débil",
+    "field_password_strength_fair": "Regular",
+    "field_password_strength_strong": "Fuerte",
+    "submit_button": "Empezar gratis",
+    "divider_label": "o continúa con",
+    "social_google": "Continuar con Google",
+    "social_apple": "Continuar con Apple",
+    "signin_prompt": "¿Ya tienes cuenta? {signin_link}",
+    "_notes": {
+      "page_subtitle": "[PLACEHOLDER] {user_count} is a formatted integer. 'músicos y productores' uses masculine plural as grammatical default in Spanish — inclusive reading intended. [EXPANSION RISK] String expands slightly from EN.",
+      "field_email_placeholder": "Localised to 'tu@ejemplo.com' — 'ejemplo.com' is the recognised Spanish-language equivalent of 'example.com'.",
+      "field_password_placeholder": "[PLACEHOLDER] {min_length} is an integer.",
+      "signin_prompt": "[PLACEHOLDER] {signin_link} is an inline hyperlink. ¿? punctuation applied per es-ES conventions."
+    }
+  },
+
+  "signin": {
+    "page_title": "¡De vuelta al estudio!",
+    "page_subtitle": "Inicia sesión para continuar con tu estudio.",
+    "field_email_label": "Correo electrónico",
+    "field_email_placeholder": "tu@ejemplo.com",
+    "field_password_label": "Contraseña",
+    "field_password_placeholder": "Tu contraseña",
+    "forgot_password_link": "¿Olvidaste tu contraseña?",
+    "submit_button": "Iniciar sesión",
+    "divider_label": "o",
+    "social_google": "Continuar con Google",
+    "social_apple": "Continuar con Apple",
+    "signup_prompt": "¿Nuevo en ECHOCRAFT? {signup_link}",
+    "_notes": {
+      "page_title": "Transcreated as '¡De vuelta al estudio!' to avoid gender inflection required by the literal 'Bienvenido/a de nuevo' while keeping the voice warm and motivating (es-ES market: cercana, motivadora). Studio reference reinforces brand identity.",
+      "submit_button": "Must match dashboard.nav.sign_in casing for consistency — both use 'Iniciar sesión'.",
+      "signup_prompt": "[PLACEHOLDER] {signup_link} is an inline hyperlink. ECHOCRAFT is always uppercase — not translated or adapted. ¿? punctuation applied."
+    }
+  },
+
+  "profile_setup": {
+    "page_title": "Configura tu perfil",
+    "page_subtitle": "Cuéntanos sobre ti para personalizar tu experiencia.",
+    "field_display_name_label": "Nombre visible",
+    "field_display_name_placeholder": "Cómo te verán otros creadores",
+    "field_role_label": "Mi rol principal es…",
+    "field_role_option_producer": "Productor/a",
+    "field_role_option_songwriter": "Compositor/a",
+    "field_role_option_mixing_engineer": "Ingeniero/a de mezcla",
+    "field_role_option_sound_designer": "Diseñador/a de sonido",
+    "field_role_option_other": "Otro",
+    "field_genre_label": "Género principal",
+    "field_genre_placeholder": "p. ej. Electrónica, Hip-Hop, Ambient…",
+    "avatar_upload_label": "Foto de perfil",
+    "avatar_upload_button": "Subir foto",
+    "avatar_upload_hint": "JPG o PNG, máx. {max_size} MB.",
+    "_notes": {
+      "page_subtitle": "Shorter than EN source — no expansion risk. 'personalizar' is the correct Spanish verb.",
+      "field_role_label": "Trailing ellipsis (…) preserved per source instruction. Natural in Spanish for an open-ended prompt.",
+      "field_role_option_producer": "'/a' split form used across all role options for gender inclusivity in the es-ES market (common in modern Spain SaaS). [GENDER HOOK] resolved via '/a' form rather than masculine default.",
+      "field_role_option_songwriter": "'Compositor/a' chosen over 'Cantautor/a' (which implies singing). 'Compositor' covers the songwriting/composing role without assuming the user also performs.",
+      "field_role_option_mixing_engineer": "[GENDER HOOK] '/a' form applied. 'mezcla' is the approved market term for 'mix'.",
+      "field_role_option_sound_designer": "[GENDER HOOK] '/a' form applied. 'Diseñador/a de sonido' is the literal translation — see also template_sound_design [REVIEW] for the Sound Design anglicism question.",
+      "avatar_upload_hint": "[PLACEHOLDER] {max_size} is an integer. 'máx.' is the standard Spanish abbreviation for 'máximo'."
+    }
+  },
+
+  "plan_selection": {
+    "page_title": "Elige tu plan",
+    "page_subtitle": "Tanto para artistas en solitario como para equipos de producción, tenemos el plan que necesitas.",
+    "audience_tab_creator": "Creator",
+    "audience_tab_creator_description": "Para músicos y productores en solitario",
+    "audience_tab_studio": "Studio",
+    "audience_tab_studio_description": "Para bandas, productores y equipos",
+    "tier_label_starter": "Starter",
+    "tier_label_pro": "Pro",
+    "tier_label_max": "Max",
+    "tier_badge_popular": "Más popular",
+    "pricing_per_month": "/mes",
+    "pricing_per_user": "por usuario",
+    "cta_get_started": "Empezar",
+    "cta_start_trial": "Iniciar prueba gratis",
+    "cta_contact_sales": "Contactar con ventas",
+    "billing_free_trial_note": "Empieza tu prueba gratuita — sin tarjeta de crédito.",
+    "_notes": {
+      "audience_tab_creator": "Plan_Group — do not translate. Ontology term plan_00000001, status: approved.",
+      "audience_tab_studio": "[REVIEW] 'Studio' kept as Plan_Group anglicism per class translation policy (do_not_translate). Studio plans not present in current ontology — confirm with localization lead.",
+      "tier_label_starter": "Brand tier name — do not translate. Per CLAUDE.md rules and ontology class policy.",
+      "tier_label_pro": "Brand tier name — do not translate.",
+      "tier_label_max": "Brand tier name — do not translate.",
+      "tier_badge_popular": "'Más popular' (11 chars) vs 'Most Popular' (12 chars) — within budget. [EXPANSION RISK] flagged in source was not a problem for es-ES.",
+      "pricing_per_month": "'/mes' displayed inline after price: '9,99 €/mes'. Currency symbol and formatting handled by billing system. Number formatting: decimal comma, space before € per es-ES locale conventions.",
+      "cta_contact_sales": "'Contactar con ventas' uses the standard Spain phrasing (not 'Contacta con el equipo de ventas' — too long for a button)."
+    }
+  },
+
+  "plans": {
+    "creator_starter_name": "Creator Starter",
+    "creator_starter_tagline": "Tus primeras pistas",
+    "creator_pro_name": "Creator Pro",
+    "creator_pro_tagline": "Flujo completo de composición",
+    "creator_max_name": "Creator Max",
+    "creator_max_tagline": "Sin límites creativos",
+    "studio_starter_name": "Studio Starter",
+    "studio_starter_tagline": "Crea en equipo",
+    "studio_pro_name": "Studio Pro",
+    "studio_pro_tagline": "Producción colaborativa",
+    "studio_max_name": "Studio Max",
+    "studio_max_tagline": "Entorno profesional",
+    "_notes": {
+      "creator_starter_name": "Plan name — do not translate. Tier labels (Starter, Pro, Max) kept per rules. Audience labels (Creator, Studio) kept per Plan_Group do_not_translate policy.",
+      "creator_pro_tagline": "'Flujo completo de composición' (29 chars) vs 'Full songwriting workflow' (24 chars). Moderate expansion — within ~30% budget for taglines. 'Composición' chosen over 'songwriting' (anglicism) to keep copy natural for the market.",
+      "studio_starter_name": "[REVIEW] Studio plans not in current ontology — confirm plan names with localization lead.",
+      "studio_pro_name": "[REVIEW] See studio_starter_name note.",
+      "studio_max_name": "[REVIEW] See studio_starter_name note."
+    }
+  },
+
+  "plan_features": {
+    "midi_editor": "Editor MIDI",
+    "piano_roll": "Piano Roll",
+    "pattern_sequencer": "Secuenciador por patrones",
+    "arrangement_timeline": "Línea de arreglos",
+    "multitrack_recording_8": "Grabación multipista (8 pistas)",
+    "multitrack_recording_32": "Grabación multipista (32 pistas)",
+    "multitrack_recording_64": "Grabación multipista (64 pistas)",
+    "audio_comping": "Audio Comping",
+    "punch_in_recording": "Punch-In Recording",
+    "virtual_instruments_10": "10 instrumentos virtuales",
+    "virtual_instruments_40": "40 instrumentos virtuales",
+    "unlimited_instruments": "Instrumentos virtuales ilimitados",
+    "sample_library_20gb": "Librería de samples (20 GB)",
+    "sample_library_100gb": "Librería de samples (100 GB)",
+    "sample_library_200gb": "Librería de samples (200 GB)",
+    "effects_rack": "Rack de efectos",
+    "eq_compression": "EQ y compresión",
+    "mastering_chain": "Cadena de mástering",
+    "loudness_analyzer": "Analizador de loudness",
+    "melody_generator": "Generador de melodías",
+    "chord_progression_generator": "Generador de progresiones de acordes",
+    "drum_pattern_generator": "Generador de patrones de batería",
+    "style_transfer": "Transferencia de estilos",
+    "export_mp3": "Exportar en MP3",
+    "export_wav_flac": "Exportar en WAV/FLAC",
+    "one_click_distribution": "Distribución en un clic",
+    "track_metadata_editor": "Editor de metadatos de pista",
+    "shared_projects": "Proyectos compartidos",
+    "real_time_jam_sessions": "Sesiones de jam en directo",
+    "unlimited_jam_sessions": "Sesiones de jam ilimitadas",
+    "version_history": "Historial de versiones",
+    "comments_markers": "Comentarios y marcadores",
+    "interactive_lessons": "Lecciones interactivas",
+    "chord_explorer": "Explorador de acordes",
+    "scale_assistant": "Asistente de escalas",
+    "feature_includes_starter": "Todas las funciones de Creator Starter",
+    "feature_includes_pro": "Todo lo de Starter, más:",
+    "feature_includes_studio_starter": "Todas las funciones de Creator Starter",
+    "feature_includes_studio_pro": "Todo lo de Studio Starter, más:",
+    "feature_includes_creator_pro": "Todas las funciones de Creator Pro",
+    "feature_includes_creator_max": "Todas las funciones de Creator Max",
+    "feature_includes_studio_pro_all": "Todo lo de Studio Pro, más:",
+    "_notes": {
+      "midi_editor": "Ontology feat_00000001: approved es-ES term 'editor MIDI'. Capitalized for display as 'Editor MIDI'. MIDI acronym not translated.",
+      "piano_roll": "Ontology feat_00000006: anglicism 'Piano Roll' retained. Universally understood in DAW contexts in Spain.",
+      "pattern_sequencer": "Ontology feat_00000002: approved es-ES term 'secuenciador por patrones'. Capitalized for display.",
+      "arrangement_timeline": "Ontology feat_00000007: approved es-ES term 'línea de arreglos'. Capitalized for display.",
+      "multitrack_recording_8": "Ontology feat_00000009: approved es-ES term 'grabación multipista'. '8 pistas' added to match EN parenthetical format.",
+      "audio_comping": "[REVIEW] 'Audio Comping' kept as anglicism — term not in ontology. Source note suggests anglicism likely preferred in DAW contexts. Confirm with localization lead.",
+      "punch_in_recording": "[REVIEW] 'Punch-In Recording' kept as anglicism — term not in ontology. Source note states anglicism likely preferred. Confirm with localization lead.",
+      "virtual_instruments_10": "Ontology feat_00000003: approved es-ES term 'instrumento virtual' (plural: 'instrumentos virtuales').",
+      "sample_library_20gb": "Ontology feat_00000008: approved es-ES term 'librería de samples'. 'samples' retained as anglicism per ontology.",
+      "effects_rack": "Ontology feat_00000010: approved es-ES term 'rack de efectos'. Capitalized for display.",
+      "eq_compression": "[REVIEW] 'EQ' kept as anglicism (standard audio abbreviation for equalizer). 'compresión' is the natural Spanish translation. Confirm EQ anglicism preference with ontology lead.",
+      "mastering_chain": "Ontology feat_00000012: approved es-ES term 'cadena de mástering'. AVAILABILITY WARNING: ontology marks this feature as 'not_available' for es-ES market — check with product team whether this string should be displayed.",
+      "loudness_analyzer": "[REVIEW] 'Analizador de loudness' — 'loudness' kept as anglicism (has specific technical meaning: LUFS loudness measurement). Term not in ontology. Confirm approved form.",
+      "melody_generator": "Ontology feat_00000011: approved es-ES term 'generador de melodías'. Capitalized for display.",
+      "chord_progression_generator": "Ontology feat_00000014: approved es-ES term 'generador de progresiones de acordes'. Capitalized for display. String is longer than EN — acceptable in feature list context.",
+      "drum_pattern_generator": "[REVIEW] 'Generador de patrones de batería' — term not in ontology. 'patrones de batería' is the natural Spanish for 'drum patterns'. Confirm approved form.",
+      "style_transfer": "Ontology feat_00000013: approved es-ES term 'transferencia de estilos'. AVAILABILITY WARNING: ontology marks this feature as 'planned' (not yet available) for es-ES market.",
+      "export_mp3": "Ontology feat_00000005: approved es-ES term 'exportar en mp3'. Capitalized for display as 'Exportar en MP3'. MP3 acronym not translated.",
+      "export_wav_flac": "Ontology feat_00000015: approved es-ES term 'exportar en wav/flac'. Capitalized for display as 'Exportar en WAV/FLAC'. WAV and FLAC acronyms not translated.",
+      "one_click_distribution": "[REVIEW] 'Distribución en un clic' — term not in ontology. Natural Spanish rendering. Confirm approved form.",
+      "track_metadata_editor": "[REVIEW] 'Editor de metadatos de pista' — term not in ontology. 'pista' used for 'track' per market file. Confirm approved form.",
+      "shared_projects": "[REVIEW] 'Proyectos compartidos' — term not in ontology. Confirm approved form.",
+      "real_time_jam_sessions": "[REVIEW] 'Sesiones de jam en directo' — term not in ontology. 'En directo' preferred over 'en tiempo real' for natural Spain tone. 'Jam' retained as anglicism (common in music contexts). Confirm approved form.",
+      "unlimited_jam_sessions": "[REVIEW] 'Sesiones de jam ilimitadas' — term not in ontology. Confirm approved form.",
+      "version_history": "[REVIEW] 'Historial de versiones' — term not in ontology. Standard Spanish rendering. Confirm approved form.",
+      "comments_markers": "[REVIEW] 'Comentarios y marcadores' — term not in ontology. Confirm approved form.",
+      "interactive_lessons": "[REVIEW] 'Lecciones interactivas' — term not in ontology. Confirm approved form.",
+      "chord_explorer": "[REVIEW] 'Explorador de acordes' — term not in ontology. Confirm approved form.",
+      "scale_assistant": "[REVIEW] 'Asistente de escalas' — term not in ontology. 'Asistente' used in the tool/helper sense, not the AI sense. Confirm approved form.",
+      "feature_includes_starter": "[LENGTH] 'Todas las funciones de Creator Starter' (38 chars) vs 'All Creator Starter features' (28 chars). Monitor truncation in plan comparison UI.",
+      "feature_includes_creator_pro": "[LENGTH] 'Todas las funciones de Creator Pro' (35 chars) vs 'All Creator Pro features' (24 chars). Monitor truncation.",
+      "feature_includes_creator_max": "[LENGTH] 'Todas las funciones de Creator Max' (35 chars) vs 'All Creator Max features' (24 chars). Monitor truncation."
+    }
+  },
+
+  "confirmation": {
+    "page_title": "¡Todo listo, {name}!",
+    "page_subtitle": "Tu estudio está listo. ¡A crear!",
+    "checklist_account": "Cuenta creada",
+    "checklist_profile": "Perfil configurado",
+    "checklist_plan": "Plan {plan_name} activado",
+    "cta_primary": "Empieza a crear gratis",
+    "cta_secondary": "Ver la guía rápida",
+    "_notes": {
+      "page_title": "[PLACEHOLDER] {name} is the user's display name. Transcreated as '¡Todo listo, {name}!' to avoid the [GENDER HOOK] issue in 'Bienvenido/a' — 'Todo listo' is gender-neutral and equally warm.",
+      "checklist_plan": "[PLACEHOLDER] {plan_name} inserts a localised plan name (e.g. 'Creator Pro'). Word order adjusted to 'Plan {plan_name} activado' — more natural in Spanish than '{plan_name} plan activado'.",
+      "cta_primary": "Must match welcome.cta_primary and steps.finish_button exactly. Value: 'Empieza a crear gratis'.",
+      "cta_secondary": "Transcreated from 'Take a quick tour' — 'Ver la guía rápida' is more natural than a literal 'Haz un recorrido rápido'."
+    }
+  }
+}

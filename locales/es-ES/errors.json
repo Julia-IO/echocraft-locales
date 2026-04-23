@@ -1,0 +1,29 @@
+{
+  "_metadata": {
+    "product": "ECHOCRAFT",
+    "namespace": "errors",
+    "locale": "es-ES",
+    "version": "1.0.0",
+    "generated": "2026-04-23",
+    "scope_note": "Shared namespace. Consumed by both onboarding and dashboard. Do not duplicate strings into feature namespaces — always reference errors.* keys."
+  },
+
+  "email_invalid": "Introduce una dirección de correo válida.",
+  "email_already_registered": "Este correo ya está registrado. ¿{signin_link}?",
+  "password_too_short": "La contraseña debe tener al menos {min_length} caracteres.",
+  "password_mismatch": "Las contraseñas no coinciden.",
+  "field_required": "Este campo es obligatorio.",
+  "upload_file_too_large": "El archivo supera el límite de {max_size}. Elige un archivo más pequeño.",
+  "upload_file_wrong_type": "Formato no compatible. Formatos aceptados: {accepted_formats}.",
+  "network_generic": "Algo ha ido mal. Revisa tu conexión e inténtalo de nuevo.",
+  "session_expired": "Tu sesión ha caducado. Vuelve a iniciar sesión.",
+  "plan_upgrade_failed": "No hemos podido procesar la mejora de tu plan. Inténtalo de nuevo o contacta con soporte.",
+
+  "_notes": {
+    "email_already_registered": "[PLACEHOLDER] {signin_link} is an inline hyperlink. ¿? punctuation wraps the inline question per es-ES conventions — the link text itself will need the matching closing '?' if rendered standalone.",
+    "password_too_short": "[PLACEHOLDER] {min_length} is an integer.",
+    "upload_file_too_large": "[PLACEHOLDER] {max_size} is a formatted file size string (e.g. '5 MB'). 'archivo' used per market file style recommendation (not 'fichero').",
+    "upload_file_wrong_type": "[PLACEHOLDER] {accepted_formats} is a runtime comma-separated list of file extensions.",
+    "network_generic": "Follows es-ES market error pattern: explain + action. 'Revisa' preferred over 'Comprueba' — aligns with market golden example ('Revisa tu conexión e inténtalo de nuevo.')."
+  }
+}
