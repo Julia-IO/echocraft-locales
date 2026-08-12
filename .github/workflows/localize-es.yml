@@ -29,18 +29,33 @@ jobs:
             echo "PROMPT_EOF"
           } >> "$GITHUB_OUTPUT"
 
+      - name: Render Black Ice MCP config
+        run: |
+          python3 - <<'PYEOF'
+          import os
+          with open(".github/mcp/black-ice.json") as f:
+              content = f.read()
+          content = content.replace("${BLACK_ICE_API_KEY}", os.environ["BLACK_ICE_API_KEY"])
+          with open("/tmp/black-ice-mcp.json", "w") as f:
+              f.write(content)
+          PYEOF
+        env:
+          BLACK_ICE_API_KEY: ${{ secrets.BLACK_ICE_API_KEY }}
+
       - name: Run Claude Code localization pass
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           prompt: ${{ steps.load_prompt.outputs.content }}
           claude_args: |
-            --mcp-config .github/mcp/black-ice.json
+            --mcp-config /tmp/black-ice-mcp.json
             --allowedTools "Read,Write,Edit,Glob,Grep,mcp__black-ice__get_market_profile,mcp__black-ice__check_term,mcp__black-ice__list_concepts,mcp__black-ice__validate_translation"
           # Claude Code writes locales/es-ES/**.json and .github/qa/qa-report.md
           # It never touches locales/en-US or workflow files.
-        env:
-          BLACK_ICE_API_KEY: ${{ secrets.BLACK_ICE_API_KEY }}
+          # Black Ice's API key can't be forwarded via a step-level env: block
+          # (claude-code-action doesn't pass it to the spawned claude subprocess),
+          # so it's baked into /tmp/black-ice-mcp.json above via GitHub Actions
+          # templating instead of Claude Code's own ${VAR} expansion.
 
       - name: Commit generated es-ES strings
         id: commit
