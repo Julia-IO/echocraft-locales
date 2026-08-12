@@ -1,0 +1,68 @@
+name: Localize es-ES (Echocraft)
+
+on:
+  pull_request:
+    paths:
+      - 'locales/en-US/**'
+  workflow_dispatch: {}
+
+jobs:
+  localize:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref }}
+          fetch-depth: 0
+
+      - name: Run Claude Code localization pass
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt_file: .github/prompts/localize-es-ES.md
+          mcp_config: .github/mcp/black-ice.json
+          allowed_tools: >-
+            Read,Write,Edit,Glob,Grep,
+            mcp__black-ice__get_market_profile,
+            mcp__black-ice__check_term,
+            mcp__black-ice__list_concepts,
+            mcp__black-ice__validate_translation
+          # Claude Code writes locales/es-ES/**.json and .github/qa/qa-report.md
+          # It never touches locales/en-US or workflow files.
+        env:
+          BLACK_ICE_API_KEY: ${{ secrets.BLACK_ICE_API_KEY }}
+
+      - name: Commit generated es-ES strings
+        id: commit
+        run: |
+          git config user.name "echocraft-localizer[bot]"
+          git config user.email "localizer@users.noreply.github.com"
+          git add locales/es-ES .github/qa/qa-report.md
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "chore(i18n): sync es-ES via Black Ice localization pipeline"
+            git push origin HEAD:${{ github.event.pull_request.head.ref || github.ref_name }}
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Post QA report as PR comment
+        if: steps.commit.outputs.changed == 'true' && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = '.github/qa/qa-report.md';
+            if (!fs.existsSync(path)) return;
+            const body = fs.readFileSync(path, 'utf8');
+            if (!body.trim()) return;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `### 🧊 Black Ice localization QA (warn-only — does not block merge)\n\n${body}`,
+            });

@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "black-ice": {
+      "url": "https://mcp.black-ice.ai/mcp",
+      "headers": {
+        "Authorization": "Bearer ${BLACK_ICE_API_KEY}"
+      }
+    }
+  }
+}
