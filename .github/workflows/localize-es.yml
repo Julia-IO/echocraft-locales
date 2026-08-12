@@ -47,7 +47,6 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           prompt: ${{ steps.load_prompt.outputs.content }}
-          show_full_output: true
           claude_args: |
             --mcp-config /tmp/black-ice-mcp.json
             --allowedTools "Read,Write,Edit,Glob,Grep,mcp__black-ice__get_market_profile,mcp__black-ice__check_term,mcp__black-ice__list_concepts,mcp__black-ice__validate_translation"
