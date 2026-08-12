@@ -3,6 +3,15 @@
 You are running non-interactively in CI. Do not ask questions — make the best
 call, note uncertainty in the QA report, and continue.
 
+**Black Ice locale casing**: always pass the locale to Black Ice tools
+(`get_market_profile`, `check_term`, `list_concepts`, and any other call that
+takes a locale) as lowercase `es-es`, never `es-ES`. The uppercase form does
+not error — it silently returns empty fields (`term: null`, `status: null`,
+`availability: null`), which would translate with zero terminology
+governance without any signal that something's wrong. `locales/es-ES/` file
+paths and prose elsewhere in this doc keep the mixed-case form; only the
+locale argument passed *into Black Ice tool calls* must be lowercase.
+
 ## 1. Scope the change
 
 - Diff `locales/en-US/**/*.json` against the base branch to find new or
@@ -13,9 +22,10 @@ call, note uncertainty in the QA report, and continue.
 
 ## 2. Load market context (once per run)
 
-- Call `get_market_profile` on Black Ice for locale `es-ES`, product
-  Echocraft. Keep the brand voice, formality/register, and any
-  market-availability notes in mind for every string you write.
+- Call `get_market_profile` on Black Ice for locale `es-es` (lowercase —
+  see the locale-casing note above), product Echocraft. Keep the brand
+  voice, formality/register, and any market-availability notes in mind
+  for every string you write.
 - Call `list_concepts` (optionally `list_classes`) for the Echocraft
   ontology if you need to see what domain terms exist before translating.
 
@@ -45,8 +55,9 @@ Steps:
 
 1. Identify candidate domain terms in the source string (product features,
    UI actions, Echocraft-specific nouns).
-2. Call `check_term` on each candidate term to get the approved es-ES term,
-   its status, and any forbidden alternatives. Never use a term marked
+2. Call `check_term` (locale `es-es`, lowercase) on each candidate term to
+   get the approved es-ES term, its status, and any forbidden alternatives.
+   Never use a term marked
    forbidden or deprecated. Where no approved term exists, choose the most
    natural neutral-Spanish equivalent and flag it in the QA report as a new
    term candidate.
