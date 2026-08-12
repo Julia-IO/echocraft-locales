@@ -12,25 +12,31 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      id-token: write
     steps:
       - name: Checkout PR branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.head.ref || github.ref }}
           fetch-depth: 0
+
+      - name: Load prompt file
+        id: load_prompt
+        run: |
+          {
+            echo "content<<PROMPT_EOF"
+            cat .github/prompts/localize-es-ES.md
+            echo "PROMPT_EOF"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Run Claude Code localization pass
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          prompt_file: .github/prompts/localize-es-ES.md
-          mcp_config: .github/mcp/black-ice.json
-          allowed_tools: >-
-            Read,Write,Edit,Glob,Grep,
-            mcp__black-ice__get_market_profile,
-            mcp__black-ice__check_term,
-            mcp__black-ice__list_concepts,
-            mcp__black-ice__validate_translation
+          prompt: ${{ steps.load_prompt.outputs.content }}
+          claude_args: |
+            --mcp-config .github/mcp/black-ice.json
+            --allowedTools "Read,Write,Edit,Glob,Grep,mcp__black-ice__get_market_profile,mcp__black-ice__check_term,mcp__black-ice__list_concepts,mcp__black-ice__validate_translation"
           # Claude Code writes locales/es-ES/**.json and .github/qa/qa-report.md
           # It never touches locales/en-US or workflow files.
         env:
