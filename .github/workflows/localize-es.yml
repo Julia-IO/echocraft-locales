@@ -8,6 +8,11 @@ on:
 
 jobs:
   localize:
+    # Skip cleanly on the bot's own commit re-triggering this workflow
+    # (paths filter matches the cumulative PR diff, not just the latest push).
+    # Without this, the action's own actor guard fails the run instead of
+    # letting it skip, which shows up as a false-positive red X on the PR.
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     permissions:
       contents: write
