@@ -1,31 +1,36 @@
-# es-ES sync — QA report
+# es-ES locale sync — QA report
 
-**2 keys translated, 2 flagged.** Scope: `locales/en-US/dashboard.json` → `locales/es-ES/dashboard.json` (`projects.project_card_collaborators_singular` / `_plural`). Both drafts passed `validate_translation` (es-es) with zero flags on the first pass.
+**12 keys translated** (new file `locales/es-ES/settings.json`), **6 flagged**. All 12 drafts passed `validate_translation` with zero governance flags.
 
-| Key | en-US | es-ES |
-| --- | --- | --- |
-| `projects.project_card_collaborators_singular` | `{count} collaborator` | `{count} colaborador` |
-| `projects.project_card_collaborators_plural` | `{count} collaborators` | `{count} colaboradores` |
+## ⚠️ Blocking-severity source issue
+
+- **`locales/en-US/settings.json` at HEAD is corrupted — it is not valid JSON.** Commit `d821c0c` re-added the file with dropped byte ranges: unterminated string literals (`"page_title": "Settings`, `"section_billing": "Bil`), missing key/value separators (`"section_notifications"`, `"delete_account_button"`), and two keys mashed together (`"connected_devices_plurvices"`, `"delete_account_confirmdisplay_name}? This cannot be undone."`). Any parser consuming this file will throw.
+- **Recovery used:** the intact original survives at commit `d5baf83` ("Add new settings namespace to en-US locale"). All 12 keys were translated from that version, since translating the corrupted text would have produced nonsense (e.g. `"Bil"`). The en-US file itself was left untouched per the run constraints — **it still needs repair before merge**; `git show d5baf83:locales/en-US/settings.json` is a byte-clean source to restore from.
 
 ## New term candidates (no approved Black Ice term)
 
-- **collaborator → `colaborador` / `colaboradores`.** `check_term` returned `found: false` for `Collaborator`, `Collaboration`, and `Real-Time Collaboration` in `es-es`; the ontology has no person-role concept for this. Nearest governed neighbour is `Shared Project` = *proyecto compartido* (`feat_00000015`, status `pending`). Chose `colaborador` to match the wording family already shipping in es-ES (`nav.collaboration` = "Colaboración", `onboarding.subheadline` "Crea, colabora y distribuye…"). **Recommend adding a `Collaborator` concept** so this and `nav.collaboration` stop being ungoverned.
+The Echocraft ontology covers only `Feature`, `Plan`, and `ProductLine` classes — it has **no account/settings domain concepts at all**. Every term below returned `found: false` and was chosen from existing `locales/es-ES/` precedent instead:
 
-## Grammar / placeholder concerns
+- Settings → **Ajustes** (matches `dashboard.nav.settings`)
+- Account → **Cuenta** · Billing → **Facturación** · Notifications → **Notificaciones**
+- Email address → **Correo electrónico** · Password → **Contraseña**
+- Connected device → **dispositivo conectado**
+- Danger zone → **Zona de peligro** — lowest-confidence pick. Chose the conventional settings-UI rendering for recognizability over the softer "Zona de riesgo", which sits closer to the profile's no-drama tone. Worth a terminologist's call.
 
-- `{count}` resolves to an integer and is carried once per string, kept sentence-initial as in the source — natural in Spanish here and consistent with the sibling `project_card_tracks_*` pair. No reordering needed.
-- `colaborador/colaboradores` uses generic masculine. A project whose collaborators are all women will still render the masculine form. Standard es-ES practice and unavoidable without a count-aware gender hook, but noting it because the file already carries a `[GENDER HOOK]` flag on `header.greeting_morning` — if the product decides to address that hook, this key belongs in the same sweep.
+Recommend adding a settings/account class to the ontology before the next sync, or these 12 strings will keep re-deciding themselves.
 
 ## Structural i18n issues in the en-US source
 
-- **Split plural keys vs. ICU.** The source note says "Apply ICU plural rules", but the strings ship as two sibling keys (`_singular` / `_plural`) rather than one ICU message (`{count, plural, one{…} other{…}}`). en-US and es-ES both have exactly two plural categories, so this pair is safe — but the pattern will break for locales with `zero`/`few`/`many` (pl-PL, ru-RU, ar) and can't express the es-ES habit of spelling the singular ("un colaborador" instead of "1 colaborador"). Same shape as the pre-existing `project_card_tracks_*` and `notifications_new_*` pairs; flagging as a namespace-wide structural note, not a blocker for this change.
+- **`connected_devices_singular` / `_plural` are two flat keys, not an ICU plural structure**, despite the `_notes` instructing "Apply ICU plural rules". Spanish is one/other like English so the two-key shape happens to survive here, but **zero must route to the plural key** (`0 dispositivos conectados`, not `0 dispositivo conectado`). If the runtime selects singular for `count == 1` only and falls through to plural otherwise, this is correct as written; if it does `count === 1 ? sing : plural` the zero case is already right. Flagging because the source shape can't express the rule itself. Matches the existing `dashboard.projects.project_card_tracks_*` pattern, so this is a repo-wide convention, not a new defect.
+- **`delete_account_confirm` embeds a vocative name**: `Delete your account, {display_name}?` The Spanish keeps `{display_name}` in direct address after a comma, which needs no gender agreement — the `[GENDER HOOK]` risk noted on similar keys (`onboarding.confirmation.page_title`, `dashboard.header.greeting_*`) does **not** apply here. No adjective agrees with the name in this phrasing.
+
+## Placeholders
+
+- All placeholders carried 1:1: `{count}` ×2, `{display_name}` ×1. None added, dropped, renamed, or reordered — Spanish word order matched the source in every case, so no positional-index concerns arose.
 
 ## Consistency / drift
 
-- **Pre-existing, not from this change:** `header._notes.notifications_new_singular` prescribes ES "una nueva notificación", but the shipped es-ES string is `{count} notificación nueva`. The note and the string disagree. The shipped form is the better card/badge copy — suggest correcting the note rather than the string.
-- Adjective/noun order in the new keys follows the shipped `{count} pista(s)` pattern, so the card renders consistently across both metrics.
-- No length risk: "12 colaboradores" is the same width as "12 collaborators"; no expansion pressure on the project card.
-
-## Note on instructions
-
-The run brief asked for "neutral/international es-ES", while the Black Ice `es-es` market profile mandates español de España (tú/vosotros, no Latam vocabulary). `colaborador` is identical under both readings, so nothing in this change turns on it — the market profile was treated as authoritative.
+- Anchored to existing es-ES precedent rather than re-translating: `Ajustes` ← `dashboard.nav.settings`; `Correo electrónico` ← `onboarding.signup.field_email_label`; `Contraseña` ← `onboarding.signup.field_password_label`; `Notificaciones` ← `dashboard.header.notifications_label`; `Eliminar` ← `dashboard.projects.project_card_delete`.
+- `delete_account_confirm` deliberately reuses the established destructive-confirm cadence `¿Eliminar …? Esta acción no se puede deshacer.` from `dashboard.projects.project_card_delete_confirm`.
+- **Brief/profile conflict, resolved toward the profile:** the run brief asked for *neutral/international* Spanish avoiding Spain-only vocabulary, but the Black Ice `es-es` profile mandates *"español de España únicamente · sin vocabulario latinoamericano · tú/vosotros por defecto"*. Followed the profile (it is the governing artifact for this locale) while picking vocabulary that is Spain-correct yet not Spain-exclusive, so nothing here reads as regional slang. Called out in case the brief's neutrality goal was the intended one.
+- `_notes` and `_metadata` mirror en-US structure; notes left in English, consistent with all four existing es-ES files.
