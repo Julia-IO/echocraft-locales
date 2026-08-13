@@ -1,0 +1,28 @@
+{
+  "_metadata": {
+    "product": "ECHOCRAFT",
+    "namespace": "settings",
+    "locale": "es-ES",
+    "version": "1.0.0",
+    "generated": "2026-08-13"
+  },
+
+  "page_title": "Ajustes",
+  "section_account": "Cuenta",
+  "section_billing": "Facturación",
+  "section_notifications": "Notificaciones",
+  "field_email_label": "Correo electrónico",
+  "field_password_label": "Contraseña",
+  "field_password_change_button": "Cambiar contraseña",
+  "connected_devices_singular": "{count} dispositivo conectado",
+  "connected_devices_plural": "{count} dispositivos conectados",
+  "danger_zone_title": "Zona de peligro",
+  "delete_account_button": "Eliminar cuenta",
+  "delete_account_confirm": "¿Eliminar tu cuenta, {display_name}? Esta acción no se puede deshacer.",
+
+  "_notes": {
+    "connected_devices_singular": "[PLURAL] {count} = integer. Apply ICU plural rules.",
+    "connected_devices_plural": "[PLURAL] See singular note.",
+    "delete_account_confirm": "[PLACEHOLDER] {display_name} is user-generated content — do not translate the placeholder."
+  }
+}
