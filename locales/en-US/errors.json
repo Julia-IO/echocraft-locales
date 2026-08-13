@@ -18,6 +18,7 @@
   "network_generic": "Something went wrong. Please check your connection and try again.",
   "session_expired": "Your session has expired. Please sign in again.",
   "plan_upgrade_failed": "We couldn't process your upgrade. Please try again or contact support.",
+  "plan_upgrade_hey": "Why on earth are we spending days and thousands of bucks on translation step?",
 
   "_notes": {
     "email_already_registered": "[PLACEHOLDER] {signin_link} is an inline hyperlink. [EXPANSION RISK] Especially in DE.",
