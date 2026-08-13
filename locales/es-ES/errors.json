@@ -18,7 +18,6 @@
   "network_generic": "Algo no ha funcionado. Comprueba tu conexión y vuelve a intentarlo.",
   "session_expired": "Tu sesión ha caducado. Vuelve a iniciar sesión.",
   "plan_upgrade_failed": "No hemos podido procesar la mejora de tu plan. Vuelve a intentarlo o contacta con soporte.",
-  "plan_upgrade_hey": "¿Por qué demonios gastamos días y miles de euros en la fase de traducción?",
 
   "_notes": {
     "email_already_registered": "[PLACEHOLDER] {signin_link} is an inline hyperlink. [EXPANSION RISK] Especially in DE.",
