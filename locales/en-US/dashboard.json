@@ -98,6 +98,7 @@
     "template_sound_design": "Sound design",
     "create_button": "Create project",
     "cancel_button": "Cancel",
+    "hello_test": "Hello",
     "_notes": {
       "field_bpm_label": "BPM is the technical abbreviation — keep as-is. 'Tempo' may be localised.",
       "template_singer_songwriter": "[EXPANSION RISK] Hyphenated compound. DE expansion expected.",
