@@ -1,0 +1,25 @@
+{
+  "_metadata": {
+    "product": "ECHOCRAFT",
+    "namespace": "dashboard",
+    "locale": "en-US",
+    "version": "1.0.0",
+    "generated": "2026-08-14"
+  },
+
+  "project_exported_toast": "Your project exported to the cloud.",
+  "studio_max_upsell": "Unlock unlimited tracks and stems with Studio Max.",
+  "ai_melody_disclaimer": "AI-powered suggestions — you choose what stays.",
+  "track_count_summary": "{count} track in this project",
+  "track_count_summary_plural": "{count} tracks in this project",
+  "export_mix_button": "Export mix",
+
+  "_notes": {
+    "project_exported_toast": "[TERM] 'project', 'export', 'the cloud' are ontology-approved terms — see terminologyRules for es-ES ('exportar', 'la nube').",
+    "studio_max_upsell": "[TERM — DO NOT TRANSLATE] 'Studio Max' is a plan name; ontology policy keeps plan names in English across all locales. 'track' and 'stems' are governed production vocabulary.",
+    "ai_melody_disclaimer": "[TERM] Ontology requires AI features to be framed as 'AI-powered' assistance, never as the sole creator — matches es-ES AI-framing guidance (asistente/copiloto, never 'IA compone por ti').",
+    "track_count_summary": "[PLURAL] Singular form. {count} is an integer — apply ICU plural rules for es-ES.",
+    "track_count_summary_plural": "[PLURAL] Plural form. See singular note.",
+    "export_mix_button": "[TERM] Button label — 'export' and 'mix' are governed terms; button length constraints apply (2-3 words, verb + object per ontology uxMicrocopyRules)."
+  }
+}
