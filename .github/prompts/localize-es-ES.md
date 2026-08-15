@@ -36,8 +36,7 @@ copy that:
 
 - reads as **native, neutral Spanish** — the kind a Spanish-speaking user
   would recognize as written for them, not translated at them. Avoid
-  calques, literal English syntax, and region-specific slang (no Spain-only
-  or Latam-only idioms — stay neutral/international es-ES).
+  calques, literal English syntax, and region-specific slang (stay neutral/international es-ES).
 - is **original to the English intent**, not to its literal wording. Start
   from what the string is trying to accomplish for the user in that UI
   moment, then write the Spanish that accomplishes the same thing.
@@ -131,6 +130,7 @@ Create `.github/qa/qa-report.md` (overwrite any previous run) with:
 
 - A short summary line: how many keys translated, how many flagged.
 - A bulleted list of grammar/placeholder-agreement concerns from step 3.4.
+- A bulleted list of the Black Ice ontology terms used listing each term, the status and any brief note if relevant.
 - A bulleted list of new term candidates (no approved Black Ice term found)
   from step 3.2.
 - A bulleted list of structural i18n issues (plurals, concatenation, etc.)
