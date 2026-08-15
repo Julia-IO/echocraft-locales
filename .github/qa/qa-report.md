@@ -1,34 +1,76 @@
-# es-ES locale sync — QA report
+# es-ES sync QA report
 
-**6 keys translated, 5 flagged.** Source diff vs `origin/main`: one added file, `locales/en-US/demo.json` (6 translatable keys). Created `locales/es-ES/demo.json` mirroring the en-US structure key-for-key. All 6 drafts passed `validate_translation` (es-es) with zero flags on the first attempt.
+6 keys translated in `locales/es-ES/demo.json` (new file), 0 blocked, 5 flagged for review.
+All 6 drafts passed `validate_translation` (es-es) with zero governance flags on the first attempt.
+
+## Blocking-ish: invalid source JSON
+
+- `locales/en-US/demo.json` has a **trailing comma** after `"export_mix_button"` (line 16), making the
+  file invalid JSON. It parsed here only by manual reading. The es-ES output is valid JSON and does
+  not reproduce it. Fix needed in en-US — out of scope for this run (constraint: never edit en-US).
+
+## Market availability
+
+- **`studio_max_upsell` promotes a plan that is not available in this market.** Black Ice reports
+  `Studio Max` (`plan_00000006`) as `availability: planned` for es-es — as is the whole `Studio`
+  product line (`prod_00000002`). Every `Creator` tier is `available`. Shipping this upsell to es-ES
+  users advertises a plan they cannot buy. Recommend gating the key by market, or retargeting it to
+  `Creator Max`. Translated as-is so the key is not left empty.
 
 ## Grammar / placeholder concerns
 
-- **`track_count_summary` / `_plural`** — `{count}` carried once each, position unchanged (Spanish takes the numeral first here too). Assumed to resolve to a formatted integer; the market profile wants a space as thousands separator (`1 000`), which is the formatter's job rather than the string's — confirm the runtime number formatter is locale-aware.
-- **`studio_max_upsell`** — "pistas" (fem.) + "stems" (masc. loan) coordinate into a mixed-gender plural, so the adjective is masculine plural: "ilimitad**os**". Grammatically correct, but it reads as agreeing only with "stems"; flagging so a reviewer doesn't "correct" it to "ilimitadas".
+- `track_count_summary` / `_plural`: `{count}` resolves to an integer. Kept in leading position —
+  matches the established es-ES pattern in `dashboard.projects.project_card_tracks_singular`
+  (`"{count} pista"`). No gender agreement risk (`pista` is fixed, feminine).
+- `studio_max_upsell`: `"pistas y stems ilimitados"` mixes feminine (`pistas`) and masculine (`stems`)
+  nouns; masculine plural agreement on the adjective is correct standard Spanish here, but it reads
+  slightly asymmetrically. Acceptable; noted in case a reviewer prefers a recast.
 
-## New term candidates (no approved Black Ice term)
+## Black Ice ontology terms used
 
-- **track** — `check_term` (es-es) returned no match. Used **"pista"** per the market profile `terminologyRules`, consistent with existing `dashboard.json` (`project_card_tracks_*`).
-- **mix** — no `check_term` match. Used **"mezcla"**; the profile's `uxMicrocopyRules` gives "Exportar mezcla" verbatim as a button example, so it is effectively governed but absent from the ontology.
-- **stem** — no `check_term` match. Used **"stems"** per `terminologyRules` ("stems o pistas separadas"). See structural note below re: first mention.
-- **project / export / cloud** — no `check_term` matches, despite the en-US `_notes` describing them as "ontology-approved". Used "proyecto", "exportar", "la nube" from `terminologyRules`. These three look like genuine ontology gaps worth adding as concepts.
-- Note: every `Plan` and `Feature` concept in the es-es ontology is `status: "pending"` except `MIDI Editor` (`approved`), so all terminology above is provisional rather than ratified.
+- `Studio Max` (`plan_00000006`) — status **pending**, availability **planned**. Kept untranslated as
+  a brand plan identifier, consistent with `onboarding.plans.studio_max_name`. See availability flag above.
+- Market-profile mandated terms (governed by `terminologyRules`, not by an ontology concept):
+  **pista** (track), **mezcla** (mix), **la nube** (cloud), **exportar**, **IA**, **stems**.
+- `Melody Generator` (`feat_00000010`, "generador de melodías") — checked for `ai_melody_disclaimer`;
+  not used, since the source string is a generic AI disclaimer, not a reference to that feature.
 
-## Structural i18n issues
+## New term candidates (no approved Black Ice term found)
 
-- **`studio_max_upsell` promotes a plan that is not yet available in this market.** `check_term` (es-es) reports `Studio Max` with `availability: "planned"` — all three `Studio *` plans are `planned`, while `Creator *` are `available`. Copy shipped as written, but a Spanish user may see an upsell for something they cannot buy. `check_market_availability` could not be called in this run (permission not granted in CI), so this rests on `check_term` metadata alone — needs a human call on whether to gate the key.
-- **Plan name is hard-coded inside the sentence.** `studio_max_upsell` embeds "Studio Max" in running text, whereas `onboarding.json → complete.checklist_plan` uses a `{plan_name}` placeholder. The inline form blocks per-market plan-name substitution and forces a re-translation if the tier is renamed.
-- **Plural handling is a two-key pair, not ICU.** The `_notes` for `track_count_summary` say "apply ICU plural rules", but the structure is two sibling keys, so category selection happens in calling code. es-ES only needs one/other, so output is correct — however there is no room for a `count = 0` form ("Ningún…" vs. "0 pistas"), and the note contradicts the actual shape. Same latent issue as `project_card_tracks_*` and `notifications_new_*`; worth migrating the repo to ICU `plural {}`.
-- **`_metadata.namespace` says `"dashboard"`, not `"demo"`.** Mirrored as-is (en-US is never edited), but it will collide with `dashboard.json`'s namespace if the loader keys off that field — and unlike `dashboard.json` these keys are flat rather than nested under `nav`/`projects`/`studio`. Fix belongs in en-US.
-- **"stems" appears here for the first time in `locales/es-ES/`.** The profile says to gloss it on first mention ("pistas separadas (stems)") and the golden example does exactly that. Left unglossed because "pistas" already appears in the same sentence, so the parenthetical reads redundant and pushes the banner past ~65 chars. Deliberate deviation.
-- **`project_exported_toast` is a bare declarative in EN** ("Your project exported to the cloud."). Rendered with the profile's success pattern ("Listo. …"), which adds a word the source does not have. Intentional, not a literal match.
+- **track** → `pista` — no ontology concept; taken from the market profile's terminology rules and
+  existing es-ES usage.
+- **mix** → `mezcla` — same; also matches the profile's UX microcopy example "Exportar mezcla".
+- **project** → `proyecto` — no concept; matches existing es-ES files.
+- **cloud** → `la nube` — no `Cloud Sync` concept; mandated by profile terminology rules.
+- **stems** → `stems` — no `Stem Separation` concept. Profile says "stems o pistas separadas (aclarar
+  en primera mención)". Used the bare anglicism here for length; the golden example uses the
+  clarifying form "pistas separadas (stems)". Worth registering as a concept.
+- **AI suggestions** → `sugerencias con IA` — no `AI Assistant` concept; `sugerencias` is an
+  explicitly sanctioned IA word in the profile.
+
+## Structural i18n issues in the en-US source
+
+- **`track_count_summary` uses a suffix-key plural, not ICU.** The `_plural` sibling convention gives
+  only two forms. It works for es-ES (which also has 2 categories), but it is not plural-aware
+  infrastructure — it will break for locales with `few`/`many` (pl, ru, ar). Every other namespace in
+  this repo uses the same `_singular`/`_plural` pattern, so this is a repo-wide design issue, not new
+  here. Recommend ICU `plural{}` selects.
+- **`track_count_summary` (singular) hardcodes `{count}` for a value that is always 1.** English and
+  Spanish both tolerate "1 pista", but the `_notes` in `dashboard.json` for the parallel key say ES
+  should read "una nueva notificación" for the singular — i.e. the existing convention is
+  inconsistent with itself. I kept `{count}` to match what `dashboard.json` actually ships.
+- **`demo.json` has no `_notes` block**, unlike every other namespace in the repo. Placeholder
+  semantics for `{count}` had to be inferred. Adding `_notes` would make future locale syncs safer.
+- No concatenated/assembled strings and no hard-coded English inside placeholder values detected.
 
 ## Consistency / drift
 
-- **"tú eliges qué se queda"** in `ai_melody_disclaimer` reuses the exact phrasing already in `es-ES/dashboard.json → studio.ai_composition_hint` and matches the profile's AI-framing golden example. Deliberate — same concept, same wording.
-- **"{count} pista(s)"** matches `es-ES/dashboard.json → projects.project_card_tracks_singular/_plural` exactly.
-- **"ilimitados"** follows `es-ES/onboarding.json → plan_features` ("Instrumentos ilimitados", "Jam sessions ilimitadas") rather than an alternative like "sin límite".
-- `Studio Max` left untranslated, consistent with `onboarding.json → plans.studio_max_name`. No contradictions found with existing es-ES messaging.
-- `_notes` blocks kept in English verbatim, consistent with `es-ES/onboarding.json` and `es-ES/dashboard.json`.
-- Key parity and placeholder integrity were verified by direct file comparison — script execution (`python3`, `node`) is blocked by sandbox policy in this run, so no automated parity check ran.
+- `ai_melody_disclaimer` deliberately reuses the exact sentence "Tú eliges qué se queda." already
+  shipped in `dashboard.studio.ai_composition_hint`, preserving the profile's required AI-control
+  signal and keeping one voice for AI authorship messaging across namespaces.
+- `export_mix_button` = "Exportar mezcla" (15 chars, within the ≤22-char button ceiling) and is
+  consistent with `dashboard.projects.project_card_export` ("Exportar").
+- `project_exported_toast` follows the profile's success-toast shape ("Listo. …", cf. "Listo. Ya
+  puedes descargarlo.") rather than translating the English literally — the English is a bare
+  statement with no confirmation beat, which reads flat as a Spanish toast.
+- Register: `tú` throughout, matching all existing es-ES files and the profile default.
