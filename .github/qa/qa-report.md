@@ -1,89 +1,77 @@
-# es-ES sync QA report — `locales/en-US/demo.json`
+# es-ES sync QA — `locales/en-US/demo.json` → `locales/es-ES/demo.json`
 
-**6 keys translated, 0 blocked, 6 flagged for review.** All drafts passed
-`validate_translation` (es-es) with zero governance flags on the first attempt.
+**5 strings translated (new file), 0 blocked, 5 items flagged.** All drafts passed
+`validate_translation` (es-es) with zero flags on the first attempt.
 
 ## Grammar / placeholder concerns
 
-- `track_count_summary` / `track_count_summary_plural` — `{count}` resolves to an
-  integer and is carried once into each form, in the same leading position
-  (natural in Spanish). Singular renders "1 pista en este proyecto", which is
-  correct. No reordering needed; no gendered agreement depends on the slot.
+- `track_count_summary` / `_plural` — `{count}` (integer) carried once into each
+  form, kept in leading position (natural in Spanish). Singular renders
+  "1 pista en este proyecto"; no gender agreement depends on the slot.
 - No positional (`%s` / `%1$s`) placeholders in this namespace.
 
 ## Black Ice ontology terms used
 
-- **Studio Max** (`plan_00000006`, Plan) — status `pending`, availability
-  **`planned`**. Kept untranslated as a brand plan identifier, consistent with
-  `onboarding.plans.studio_max_name`. See market-availability flag below.
-- **Studio** (`prod_00000002`, ProductLine) — status `pending`, availability
-  `planned`.
-- Reference terms confirmed for consistency, not newly introduced:
-  **Multitrack Recording** → "grabación multipista" (`pending` / `available`),
-  **WAV/FLAC Export** → "exportación WAV/FLAC" (`pending` / `available`),
-  **Melody Generator** → "generador de melodías" (`pending` / `available`).
-- Note: every concept in the es-es ontology except **MIDI Editor**
-  (`feat_00000001`) is still `status: pending`, so no term used here is
-  formally approved.
+- **Studio Max** (`plan_00000006`, Plan) — `pending` / availability **`planned`**.
+  Left untranslated as a brand identifier, matching
+  `onboarding.plans.studio_max_name`. See availability flag below.
+- **Melody Generator** → "generador de melodías" (`pending` / `available`) —
+  consulted for `ai_melody_disclaimer`; the feature name is not surfaced in the
+  string, so the profile's AI vocabulary ("sugerencias", "IA") was used instead.
+- **Creator Max** (`plan_00000003`) — `pending` / `available`; checked as the
+  market-available alternative to Studio Max.
+- Note: every es-es concept except **MIDI Editor** (`feat_00000001`) is
+  `status: pending`, so no term used here is formally approved.
+- `check_market_availability` and `list_classes` were not permitted in this run;
+  availability reads come from `check_term` / `list_concepts` instead.
 
-## New term candidates (no approved Black Ice term)
+## New term candidates (no Black Ice concept found)
 
-- **track** → "pista" — no ontology concept; taken from the market profile's
-  terminology rules and already used consistently across es-ES.
-- **mix** → "mezcla" — no ontology concept; market-profile term, matches the
-  profile's own golden example "Exportar mezcla".
-- **cloud** → "la nube" — no ontology concept; market-profile term.
-- **stem** → "stems (pistas separadas)" — `check_term` returned no match. The
-  market profile allows "stems o pistas separadas" and asks for a gloss on
-  first mention, which is what the upsell string does. Worth registering as a
-  concept.
-- **AI suggestions** → "sugerencias con IA" — no ontology concept;
-  market-profile approved AI vocabulary ("sugerencias", "IA").
+- **track** → "pista" — `check_term` no match; market-profile terminology rule,
+  consistent with existing es-ES.
+- **mix** → "mezcla" — no match; profile rule + golden example "Exportar mezcla".
+- **cloud** → "la nube" — no match; profile rule.
+- **stem** → "stems" — no match. Profile allows "stems o pistas separadas" and
+  asks for a gloss on first mention; the gloss was dropped to keep the upsell
+  within button/banner length. Worth registering as a concept.
+- **AI suggestions** → "sugerencias con IA" — no match; profile AI vocabulary.
 
 ## Structural i18n issues in the en-US source
 
 - **Market availability mismatch (highest priority).** `studio_max_upsell`
   promotes Studio Max, which Black Ice reports as `availability: planned` for
-  es-es — as is the whole **Studio** product line. Only the **Creator** line is
-  `available` in this market. The string has been translated as written, but
-  shipping it to es-ES likely advertises a plan Spanish users cannot buy.
-  Recommend gating this key by market, or retargeting it to **Creator Max**
-  (`plan_00000003`, `available`). Could not confirm via
-  `check_market_availability` — that tool was not permitted in this run, so the
-  read comes from `check_term` availability fields.
-- **Plural handling is key-suffix, not ICU.** `track_count_summary` /
-  `track_count_summary_plural` encode plurals as two sibling keys. This happens
-  to work for Spanish (two forms, same split as English), so es-ES output is
-  correct — but it is not a plural-safe structure for the wider locale set, and
-  there is no zero form. Every other namespace in this repo uses ICU-oriented
-  `_notes` guidance; consider migrating to real ICU `plural` messages.
-- **Inconsistent plural key naming.** The pair is `track_count_summary` /
-  `track_count_summary_plural`, whereas `dashboard.json` uses explicit
-  `_singular` / `_plural` pairs (`project_card_tracks_singular` /
-  `_plural`). The bare singular key reads like a non-plural string to tooling.
-- **Hard-coded English inside the copy.** "stems" is an English term carried
-  into the Spanish string. Retained deliberately (industry-standard in ES audio
-  work, and the profile permits it) with a Spanish gloss on first mention, but
-  it is an untranslated English token in a localized file.
-- **No `_notes` block.** Every other namespace in `locales/en-US/` ships
-  translator notes marking placeholders, expansion risk and gender hooks.
-  `demo.json` has none, so `{count}`'s type and the surface for each string had
-  to be inferred from key names.
+  es-es — as is the whole **Studio** product line (`prod_00000002`). Only
+  **Creator** is `available` in this market. Translated as written, but shipping
+  it to es-ES likely advertises a plan Spanish users cannot buy. Recommend
+  gating by market or retargeting to **Creator Max**.
+- **Plural handling is key-suffix, not ICU.** Two sibling keys
+  (`track_count_summary` / `_plural`) rather than an ICU `plural` message. It
+  happens to work for Spanish (same one/other split as English) so the es-ES
+  output is correct, but there is no zero form and it is not plural-safe for
+  other locales.
+- **Inconsistent plural key naming.** `dashboard.json` uses explicit
+  `_singular` / `_plural` pairs; here the singular is the bare key, which reads
+  as a non-plural string to tooling.
+- **English token in localized copy.** "stems" is retained (industry-standard in
+  ES audio work, profile-permitted) but is untranslated English in an es-ES file.
+- **No `_notes` block.** Every other namespace ships translator notes marking
+  placeholder types, expansion risk and gender hooks; `demo.json` has none, so
+  `{count}`'s type and each string's UI surface were inferred from key names.
+- **Terse English source.** "Your project exported to the cloud." omits the
+  auxiliary — reads like assembled/truncated copy. Rendered as a proper Spanish
+  success toast rather than mirrored literally.
 
 ## Consistency / drift
 
-- `ai_melody_disclaimer` was written to reuse the exact wording already
-  established in `es-ES/dashboard.json` → `studio.ai_composition_hint`
-  ("Tú eliges qué se queda."), so the AI-authorship message stays identical
-  across namespaces.
+- `ai_melody_disclaimer` reuses the wording already established in
+  `es-ES/dashboard.json` → `studio.ai_composition_hint` ("Tú eliges qué se
+  queda."), keeping the AI-authorship message identical across namespaces.
 - "pista" / "pistas" matches `dashboard.projects.project_card_tracks_*`;
-  "Exportar mezcla" matches the `project_card_export` / profile button pattern
-  (verb + object, 15 chars, within the ≤22-char button limit).
-- **Register conflict, resolved toward the market profile.** The run brief asked
-  for "neutral/international" Spanish; the es-es market profile mandates Spanish
-  *of Spain* (`tú`/`vosotros`, no Latin American vocabulary). The profile won,
-  which also keeps this file consistent with the existing es-ES corpus. Nothing
-  written here is region-marked slang, so it reads fine either way.
-- `project_exported_toast` follows the profile's success-toast pattern
-  ("Listo. …") rather than mirroring the English sentence shape; this is
-  intentional and matches the profile's golden examples.
+  "Exportar mezcla" matches the profile's verb+object button pattern (15 chars,
+  within the ≤22-char limit).
+- **Register:** the brief asked for neutral/international Spanish; the es-es
+  market profile mandates Spanish of Spain (`tú`/`vosotros`, no LatAm
+  vocabulary). Followed the profile, which also keeps this file consistent with
+  the existing es-ES corpus. Nothing written is region-marked slang.
+- `project_exported_toast` follows the profile's success pattern ("Listo. …")
+  instead of the English sentence shape — intentional, per golden examples.
