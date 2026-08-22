@@ -1,0 +1,14 @@
+{
+  "_metadata": {
+    "product": "ECHOCRAFT",
+    "namespace": "errors",
+    "locale": "en-US",
+    "version": "1.0.0",
+    "generated": "2026-03-05",
+    "scope_note": "Shared namespace. Consumed by both onboarding and dashboard. Do not duplicate strings into feature namespaces — always reference errors.* keys."
+  },
+
+  "email_invalid": "Please add a valid email address.",
+
+  
+}
