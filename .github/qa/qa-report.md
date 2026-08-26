@@ -1,32 +1,25 @@
-# es-ES sync QA report
+# es-ES locale sync — QA report
 
-5 keys translated in `locales/es-ES/demo.json` (new file); 6 items flagged. All drafts passed `validate_translation` (es-es) with zero governance flags — no revisions needed.
+**1 key translated, 1 flagged.** Changed source: `locales/en-US/dashboard.json` → `nav.get_test` ("Say hello") → `locales/es-ES/dashboard.json` → `"Saluda"`.
 
 ## Grammar / placeholder concerns
 
-- `track_count_summary` / `_plural`: `{count}` carried once each, kept in leading position (natural in ES). Assumed to resolve to an integer. No gender agreement risk ("pista" is feminine and fixed).
-- `studio_max_upsell`: mixed-gender noun list ("pistas" f. + "stems" m.) takes masculine plural agreement — "ilimitados" is correct, not "ilimitadas". Noted in case a reviewer reads it as a typo.
+- None — the changed string contains no placeholders.
 
 ## Black Ice ontology terms used
 
-- **Studio Max** (`plan_00000006`) — status `pending`, availability **`planned`** in es-ES. Brand tier name, kept untranslated.
-- **Melody Generator** (`feat_00000010`) — status `pending`, term "generador de melodías". Not surfaced literally; `ai_melody_disclaimer` refers to the feature generically as "Sugerencias con IA" per the profile's AI framing rules.
-- Market-profile terminology rules (not ontology concepts) applied verbatim: **pista**, **mezcla**, **la nube**, **exportar**, **IA**, **stems**.
+- None. No domain concept from the Echocraft ontology appears in "Say hello"; `validate_translation` on the draft returned 0 flags for `es-es`.
 
-## New term candidates (no approved Black Ice term)
+## New term candidates
 
-- **track** → "pista" — `check_term` returns no concept; term comes from the market profile's terminology rules and existing es-ES files. Worth promoting to the ontology.
-- **stem** → "stems" — no concept. Profile says "stems o pistas separadas (aclarar en primera mención)". Kept as "stems" for length in an upsell line; see drift note below.
-- **mix** → "mezcla", **export** → "exportar", **cloud** → "la nube", **project** → "proyecto" — all profile-governed, none present as ontology concepts.
+- None.
 
-## Structural i18n issues in the en-US source
+## Structural i18n issues (en-US source)
 
-- **Plural handling**: `track_count_summary` / `track_count_summary_plural` uses the suffix convention rather than an ICU plural structure. It happens to map onto Spanish (one/other), but it's fragile — locales with more than two plural categories will break, and the source carries no `[PLURAL]` note.
-- **Missing `_notes` block**: unlike every other namespace in this repo, `demo.json` ships no `_notes`. Translators get no `[PLACEHOLDER]` / `[PLURAL]` / `[EXPANSION RISK]` guidance; `{count}`'s runtime type is inferred, not documented.
-- **Market availability mismatch**: `studio_max_upsell` promotes Studio Max, which Black Ice reports as `availability: planned` for es-es. Shipping this string in Spain may advertise a plan users can't buy yet — gate it or confirm launch timing.
+- `nav.get_test` — **ambiguous UI intent.** "Say hello" in a nav bar is idiomatically a *Contact us* link in marketing navs, but the key name (`get_test`, mirroring the existing scaffold key `new_project_modal.hello_test` = "Hello") reads as a test/placeholder string. Translated as a literal greeting imperative (`"Saluda"`, tú register, 6 chars — well inside the ≤22-char button/nav ceiling). If the intent is actually a contact link, `"Hablemos"` is the natural es-ES equivalent and the string should be re-issued.
+- `nav.get_test` — no `_notes` entry, unlike most other keys in `dashboard.json` which carry `[PLACEHOLDER]` / `[EXPANSION RISK]` translator guidance. The key name is also non-descriptive of its surface, which is what forced the guess above.
 
 ## Consistency / drift
 
-- `ai_melody_disclaimer` uses "tú decides qué se queda", matching the Black Ice golden example verbatim. The already-shipped `es-ES/dashboard.json → studio.ai_composition_hint` uses "Tú eliges qué se queda". Same concept, two verbs. I aligned the new string to the governance source; recommend converging dashboard onto "decides" (out of scope for this run).
-- "stems" appears bare here, while the profile's golden export example clarifies it as "pistas separadas (stems)". This is the first mention of stems anywhere in `locales/es-ES/`. Left bare to respect upsell line length; flag if a fuller first-mention gloss is preferred.
-- `export_mix_button` → "Exportar mezcla" matches the profile's UX microcopy example exactly and the verb+object button pattern (15 chars, under the 22-char button ceiling).
+- Register is consistent with the rest of `locales/es-ES/dashboard.json` and the es-es market profile: tú-form imperative, matching `nav.get_started` ("Empezar gratis"), `nav.download` ("Descargar"), and `new_project_modal.hello_test` ("Hola"). No hype vocabulary, no LatAm forms.
+- No contradiction with existing Echocraft messaging elsewhere in `locales/es-ES/`.
