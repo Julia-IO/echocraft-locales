@@ -1,0 +1,16 @@
+{
+  "_metadata": {
+    "product": "ECHOCRAFT",
+    "namespace": "dashboard",
+    "locale": "en-US",
+    "version": "1.0.0",
+    "generated": "2026-08-26"
+  },
+
+  "sample_strings": {
+    "project_card_bpm_summary": "This project runs at {bpm} BPM, so keep the metronome in sync before you record.",
+    "field_key_helper": "Choose the key your project is in — this sets the default scale for the melody generator.",
+    "template_sound_design_description": "Start from a Sound Design template if you're building textures and atmospheres rather than a full arrangement.",
+    "track_type_midi_description": "Add a MIDI track when you want to program notes with the AI composition tools instead of recording live audio."
+  }
+}
