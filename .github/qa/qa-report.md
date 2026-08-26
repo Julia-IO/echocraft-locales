@@ -1,25 +1,30 @@
 # es-ES locale sync — QA report
 
-**1 key translated, 1 flagged.** Changed source: `locales/en-US/dashboard.json` → `nav.get_test` ("Say hello") → `locales/es-ES/dashboard.json` → `"Saluda"`.
+**4 keys translated** (new file `locales/es-ES/sample.json`), **0 blocked**, 6 items flagged for review. All 4 drafts passed `validate_translation` (es-es) with no flags on the first attempt.
 
 ## Grammar / placeholder concerns
 
-- None — the changed string contains no placeholders.
+- `sample_strings.project_card_bpm_summary` — `{bpm}` is the only placeholder in the changed set; carried over once, kept before the invariant unit `BPM` ("va a {bpm} BPM"), so no gender/number agreement is triggered. Assumed it resolves to a formatted number produced upstream; if it is formatted client-side, es-ES needs a comma decimal separator (`128,5`), not a period.
+- Register: the Black Ice market profile for `es-es` specifies **español de España, tú/vosotros**, which conflicts with the brief's "neutral/international" instruction. Followed the market profile (and existing `locales/es-ES/*`, which are all `tú`). No Latin-American vocabulary used.
 
 ## Black Ice ontology terms used
 
-- None. No domain concept from the Echocraft ontology appears in "Say hello"; `validate_translation` on the draft returned 0 flags for `es-es`.
+- **MIDI Editor** → `editor MIDI` — status `approved`, available. Surfaced here as "pista MIDI" (matches `dashboard.studio.track_type_midi`).
+- **Melody Generator** → `generador de melodías` — status `pending`, available. Matches `dashboard.nav.melody_generator`.
 
-## New term candidates
+## New term candidates (no Black Ice concept found)
 
-- None.
+- **Sound Design** — `check_term` returned no concept. Used `Diseño de sonido`, consistent with `dashboard.new_project_modal.template_sound_design` and `onboarding.profile_setup.field_role_option_sound_designer`. Note: `dashboard._notes.template_sound_design` says the anglicism is preferred in ES and asks to confirm with the ontology — the existing es-ES string does *not* use the anglicism, so the note and the shipped copy already disagree. Worth an ontology entry to settle it.
+- **AI Composition** — no concept found. Used `composición con IA`, matching `dashboard.studio.ai_composition_label` and `dashboard.nav.ai_composition`.
+- **Metronome** / **Key (musical)** — no concepts. Used `metrónomo` and `tonalidad`, both already established in `dashboard.json`.
 
-## Structural i18n issues (en-US source)
+## Structural i18n issues in the en-US source
 
-- `nav.get_test` — **ambiguous UI intent.** "Say hello" in a nav bar is idiomatically a *Contact us* link in marketing navs, but the key name (`get_test`, mirroring the existing scaffold key `new_project_modal.hello_test` = "Hello") reads as a test/placeholder string. Translated as a literal greeting imperative (`"Saluda"`, tú register, 6 chars — well inside the ≤22-char button/nav ceiling). If the intent is actually a contact link, `"Hablemos"` is the natural es-ES equivalent and the string should be re-issued.
-- `nav.get_test` — no `_notes` entry, unlike most other keys in `dashboard.json` which carry `[PLACEHOLDER]` / `[EXPANSION RISK]` translator guidance. The key name is also non-descriptive of its surface, which is what forced the guess above.
+- `locales/en-US/sample.json` declares `"namespace": "dashboard"` but ships as a separate file whose keys shadow concepts already in `dashboard.json` (`project_card_*`, `field_key_*`, `template_sound_design_*`, `track_type_midi_*`). Two files owning the same namespace is a standing drift risk; consider folding these into `dashboard.json`.
+- No `_notes` block, unlike every other en-US file. The placeholder contract for `{bpm}` (integer vs. formatted decimal) is therefore undocumented — see above.
+- `field_key_helper` uses an em dash as a sentence connector. Rendered as a colon in es-ES, which is the natural es-ES equivalent; flagging only because a mechanical diff will show the punctuation change.
 
 ## Consistency / drift
 
-- Register is consistent with the rest of `locales/es-ES/dashboard.json` and the es-es market profile: tú-form imperative, matching `nav.get_started` ("Empezar gratis"), `nav.download` ("Descargar"), and `new_project_modal.hello_test` ("Hola"). No hype vocabulary, no LatAm forms.
-- No contradiction with existing Echocraft messaging elsewhere in `locales/es-ES/`.
+- Terminology aligned with existing es-ES: `pista MIDI`, `tonalidad`, `Diseño de sonido`, `generador de melodías`, `composición con IA`, `metrónomo`, `BPM` (untranslated, per `dashboard._notes.project_card_bpm_label`).
+- `track_type_midi_description` (113 chars) sits just inside the profile's 120-char tooltip ceiling. If this surface is narrower than a tooltip, it will need trimming.
