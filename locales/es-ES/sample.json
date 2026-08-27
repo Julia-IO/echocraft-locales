@@ -1,0 +1,16 @@
+{
+  "_metadata": {
+    "product": "ECHOCRAFT",
+    "namespace": "sample",
+    "locale": "es-ES",
+    "version": "1.0.0",
+    "generated": "2026-08-26"
+  },
+
+  "sample_strings": {
+    "project_card_bpm_summary": "Este proyecto está a {bpm} BPM: sincroniza el metrónomo antes de grabar.",
+    "field_key_helper": "Elige la tonalidad de tu proyecto: será la escala predeterminada del generador de melodías.",
+    "template_sound_design_description": "Empieza con la plantilla Diseño de sonido si quieres crear texturas y atmósferas en vez de un arreglo completo.",
+    "track_type_midi_description": "Añade una pista MIDI para programar notas con las herramientas de Composición con IA en vez de grabar audio en directo."
+  }
+}
