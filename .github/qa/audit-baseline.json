@@ -1,0 +1,165 @@
+{
+  "generated": "2026-10-31",
+  "concepts": {
+    "feat_00000001": {
+      "term": "editor MIDI",
+      "status": "approved",
+      "availability": "available"
+    },
+    "feat_00000002": {
+      "term": "secuenciador de patrones",
+      "status": "pending",
+      "availability": "available"
+    },
+    "feat_00000003": {
+      "term": "instrumento virtual",
+      "status": "pending",
+      "availability": "available"
+    },
+    "feat_00000004": {
+      "term": "grabación multipista",
+      "status": "approved",
+      "availability": "available"
+    },
+    "feat_00000005": {
+      "term": "exportación MP3",
+      "status": "approved",
+      "availability": "available"
+    },
+    "feat_00000006": {
+      "term": "piano roll",
+      "status": "pending",
+      "availability": "available"
+    },
+    "feat_00000008": {
+      "term": "biblioteca de samples",
+      "status": "pending",
+      "availability": "available"
+    },
+    "feat_00000009": {
+      "term": "rack de efectos",
+      "status": "approved",
+      "availability": "available"
+    },
+    "feat_00000010": {
+      "term": "generador de melodías",
+      "status": "pending",
+      "availability": "available"
+    },
+    "feat_00000011": {
+      "term": "cadena de masterización",
+      "status": "pending",
+      "availability": "available"
+    },
+    "feat_00000012": {
+      "term": "transferencia de estilo",
+      "status": "pending",
+      "availability": "available"
+    },
+    "feat_00000013": {
+      "term": "generador de progresiones de acordes",
+      "status": "approved",
+      "availability": "available"
+    },
+    "feat_00000014": {
+      "term": "exportación WAV/FLAC",
+      "status": "pending",
+      "availability": "available"
+    },
+    "feat_00000015": {
+      "term": "proyecto compartido",
+      "status": "pending",
+      "availability": "available"
+    },
+    "feat_00000016": {
+      "term": "comentario y marcador",
+      "status": "approved",
+      "availability": "not_available"
+    },
+    "feat_00000017": {
+      "term": "historial de versiones",
+      "status": "pending",
+      "availability": "planned"
+    },
+    "feat_00000018": {
+      "term": "jam session",
+      "status": "pending",
+      "availability": "available"
+    },
+    "feat_00000019": {
+      "term": "analizador de loudness",
+      "status": "pending",
+      "availability": "available"
+    },
+    "feat_00000020": {
+      "term": "distribución con un clic",
+      "status": "pending",
+      "availability": "available"
+    },
+    "feat_00000021": {
+      "term": "editor de metadatos de pista",
+      "status": "pending",
+      "availability": "available"
+    },
+    "feat_00000266": {
+      "term": "grabación con Punch-In",
+      "status": "approved",
+      "availability": "available"
+    },
+    "feat_00000267": {
+      "term": "línea de tiempo de arreglos",
+      "status": "pending",
+      "availability": "not_set"
+    },
+    "feat_00000268": {
+      "term": "asistente de escalas",
+      "status": "pending",
+      "availability": "not_set"
+    },
+    "feat_00000269": {
+      "term": null,
+      "status": null,
+      "availability": null
+    },
+    "plan_00000001": {
+      "term": "Creator Starter",
+      "status": "pending",
+      "availability": "available"
+    },
+    "plan_00000002": {
+      "term": "Creator Pro",
+      "status": "pending",
+      "availability": "available"
+    },
+    "plan_00000003": {
+      "term": "Creator Max",
+      "status": "pending",
+      "availability": "available"
+    },
+    "plan_00000004": {
+      "term": "Studio Starter",
+      "status": "pending",
+      "availability": "planned"
+    },
+    "plan_00000005": {
+      "term": "Studio Pro",
+      "status": "pending",
+      "availability": "planned"
+    },
+    "plan_00000006": {
+      "term": "Studio Max",
+      "status": "pending",
+      "availability": "planned"
+    },
+    "prod_00000001": {
+      "term": "Creator",
+      "status": "pending",
+      "availability": "available"
+    },
+    "prod_00000002": {
+      "term": "Studio",
+      "status": "pending",
+      "availability": "planned"
+    }
+  }
+}
