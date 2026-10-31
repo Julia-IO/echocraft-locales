@@ -37,8 +37,11 @@ case-insensitive, allowing plural/inflected forms such as
 "Comments & Markers" for "Comment & Marker"). Pair it with the same key in
 `locales/es-ES/`. Record file, key path and line number for each hit.
 
-Also note recurring English domain terms (music-production features, UI
-nouns) that match **no** concept — these feed step 4.
+Also collect English domain terms that match **no** concept — these feed
+step 4b. Always include every named product feature in feature lists
+(e.g. `onboarding.plan_features.*`, `dashboard.nav.*`), even if it appears
+only once; for other music-production or UI nouns, include them only if
+they recur.
 
 ## 3. Run the checks
 
@@ -46,10 +49,13 @@ For every mapped (concept, es-ES string) pair:
 
 1. **Term match** — the es-ES string uses the Black Ice es-es term (allow
    inflection, capitalisation and plural). Flag mismatches.
-2. **Forbidden variants** — run `validate_translation` (`es-es`) on each
-   es-ES string that maps to at least one concept. Report every
-   `forbidden` hit; list `info` (non-preferred allowed variant) hits
-   separately.
+2. **Forbidden variants** — validate **every** es-ES string that maps to
+   at least one concept, not a sample. Batch them: join the strings with
+   newlines into one `validate_translation` (`es-es`) call (split into a
+   few calls if very long), then attribute each flag back to its key by
+   finding the flagged text in the strings. Report every `forbidden` hit;
+   list `info` (non-preferred allowed variant) hits separately. Report how
+   many strings were validated.
 3. **Status change** — compare against the baseline. Report concepts whose
    term, status or availability changed since the last audit, with the
    affected keys.
@@ -116,6 +122,9 @@ write tools allowed. Never call `set_concept_definition`,
 
 ## 5. Write outputs
 
+Before overwriting anything, read the current `.github/qa/audit-report.md`
+from `main` and keep its findings in mind — step 6 compares against it.
+
 Write `.github/qa/audit-baseline.json`:
 
 ```json
@@ -136,9 +145,31 @@ Write `.github/qa/audit-report.md` (overwrite):
 - "New-concept candidates" — en-US term, es-ES wording, frequency, plus
   the response counts (`added` / `counted_as_repeats` /
   `hidden_previously_rejected` / `resurfaced_for_review`) and any `errors`.
+- "New since last audit" — at the top, right after the summary line: the
+  findings, labels and candidates that were not in the previous report.
+  Write "Nothing new since last audit." if empty.
 - If nothing to report: a single line "No drift found."
 
-Keep it terse — it becomes a GitHub issue body.
+Keep it terse — it becomes the pull request body.
+
+## 6. Decide whether to publish
+
+Publish (commit, push, open a PR) **only if at least one** of these is true:
+
+- a status change was found (step 3.3), i.e. `audit-baseline.json` differs
+  from `main` in anything other than `generated`
+- a new `forbidden` or `info` flag, term mismatch or availability finding
+  that was not in the previous report
+- `propose_translation` was called (successfully or refused)
+- `suggest_candidates` returned `added` > 0 or `resurfaced_for_review` > 0
+
+Otherwise — only the date or wording changed — do not commit or open a
+PR: discard your local changes (`git checkout -- .github/qa`) and finish
+with a two-line summary saying the audit found nothing new, with the
+`suggest_candidates` counts.
+
+Once the PR is open (or you've decided not to publish), you are done. Do
+not subscribe to, watch, or follow up on the PR — a human reviews it.
 
 ## Constraints
 
