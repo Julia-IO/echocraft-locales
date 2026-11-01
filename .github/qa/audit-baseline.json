@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31",
+  "generated": "2026-11-01",
   "concepts": {
     "feat_00000001": {
       "en_term": "MIDI Editor",
@@ -50,8 +50,11 @@
       "availability": "available"
     },
     "feat_00000010": {
-      "en_term": "Melody Generator",
-      "term": "generador de melodías",
+      "en_term": "Melody Composer",
+      "en_previous_terms": [
+        "Melody Generator"
+      ],
+      "term": "compositor de melodías",
       "status": "pending",
       "availability": "available"
     },
@@ -141,6 +144,24 @@
     },
     "feat_00000269": {
       "en_term": "Stem Separation",
+      "term": null,
+      "status": null,
+      "availability": null
+    },
+    "feat_00000270": {
+      "en_term": "Smart Mix Assistant",
+      "term": null,
+      "status": null,
+      "availability": null
+    },
+    "feat_00000271": {
+      "en_term": "Lyric Assistant",
+      "term": null,
+      "status": null,
+      "availability": null
+    },
+    "feat_00000272": {
+      "en_term": "AI Composition",
       "term": null,
       "status": null,
       "availability": null
