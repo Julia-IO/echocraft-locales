@@ -1,6 +1,6 @@
 # es-ES terminology audit — 2026-11-01
 
-**~58 es-ES strings checked (49 validated in batch), 34 concepts mapped of 35 (check_term on all 35; 0 have variants defined). Findings: 1 term mismatch (new) + 1 carried over, 0 forbidden, 1 status change, 1 English label change, 7 availability issues. 1 target label proposed, 7 candidates submitted.**
+**~58 es-ES strings checked (49 validated in batch), 32 concepts mapped of 35 (check_term on all 35; 0 have variants defined). Findings: 1 term mismatch (new) + 1 carried over, 0 forbidden, 1 status change, 1 English label change, 7 availability issues. 1 target label proposed, 7 candidates submitted.**
 
 ## New since last audit
 
