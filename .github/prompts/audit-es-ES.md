@@ -50,8 +50,18 @@ concept's **retired English labels**: its `en_previous_terms` in the
 baseline, plus the baseline `en_term` if it differs from the current one.
 A string that uses a retired label still maps to the concept, so its es-ES
 pair keeps being checked; record which label it matched for step 3.5.
-Pair it with the same key in `locales/es-ES/`. Record file, key path and
-line number for each hit.
+Pair it with the same key in `locales/es-ES/`. For each hit record the
+**string ID**, file and line number.
+
+**String ID** = `<namespace>:<full.key.path>` — the namespace is the file
+name without `.json` (it matches `_metadata.namespace`), and the key path
+is the complete dot-joined path from the JSON root, including every parent
+object: `sample:sample_strings.field_key_helper`, never `field_key_helper`
+or `sample.json:12`. Derive IDs mechanically by parsing the JSON (e.g. a
+short Python script that walks every file and prints ID, line and value),
+not by reading lines by eye, and check each reported ID exists in both
+`locales/en-US/` and `locales/es-ES/`. The same ID identifies the en-US
+string and its es-ES pair.
 
 Also collect English domain terms that match **no** concept — these feed
 step 4b. Always include every named product feature in feature lists
@@ -182,8 +192,9 @@ Write `.github/qa/audit-report.md` (overwrite):
 
 - Summary line: strings checked, concepts mapped, findings per check,
   target labels proposed, candidates submitted.
-- One section per check from step 3 (including "English label changes"), each a bulleted list of
-  `file:line key` → finding. Omit empty sections.
+- One section per check from step 3 (including "English label changes"),
+  each listing its findings in the **affected-string format** below. Omit
+  empty sections.
 - "Target labels proposed" — concept ID, English name, proposed es-es
   term, proposal status (or refusal reason).
 - "New-concept candidates" — en-US term, es-ES wording, frequency, plus
@@ -191,10 +202,48 @@ Write `.github/qa/audit-report.md` (overwrite):
   `hidden_previously_rejected` / `resurfaced_for_review`) and any `errors`.
 - "New since last audit" — at the top, right after the summary line: the
   findings, labels and candidates that were not in the previous report.
-  Write "Nothing new since last audit." if empty.
+  Each new finding lists its affected strings here in full too — never
+  "see below" or "the keys above". Write "Nothing new since last audit."
+  if empty.
 - If nothing to report: a single line "No drift found."
 
-Keep it terse — it becomes the pull request body.
+### Affected-string format (mandatory)
+
+Every finding about a concept or label — term mismatch, forbidden or
+`info` variant, status change, English label change, new concept used in
+strings, market availability, target label proposed — must name **each
+affected string individually**, so a reviewer can fix it without opening
+the files to find it:
+
+```
+- `feat_00000010` Melody Generator → Melody Composer — 3 strings
+  - `dashboard:nav.melody_generator` (`locales/*/dashboard.json:15`)
+    - en-US: "Melody Generator"
+    - es-ES: "Generador de melodías" (expected term: "compositor de melodías")
+```
+
+- One bullet per string, **led by its string ID** (step 2), followed by
+  the file and line. State how many strings each finding affects.
+- Quote the current string text verbatim: the en-US string for English
+  label findings, the es-ES string for es-es findings, both when the
+  finding concerns the pair. Quote the whole string if it is under ~120
+  characters; otherwise quote the sentence containing the term.
+- State the term that matched (old label, forbidden variant, etc.) and
+  the expected Black Ice term when there is one.
+- Never group or abbreviate strings: no `*` wildcards in keys, no
+  `136/138/140`, no "and N more", no "see below". Repeat the bullets in
+  every section the finding appears in.
+- Mentions only in `_notes` are listed the same way, marked `(note)`.
+- A finding that affects no string (e.g. a new concept used nowhere)
+  says "No strings affected." explicitly.
+
+End the report with **"Affected string IDs"**: one deduplicated, sorted
+code block with every string ID named by any finding, one per line, each
+followed by the concept IDs and checks that flagged it, e.g.
+`dashboard:nav.melody_generator  feat_00000010  label-change, term-match`.
+This is the fix list.
+
+Keep everything else terse — the report becomes the pull request body.
 
 ## 6. Decide whether to publish
 
