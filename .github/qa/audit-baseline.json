@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-31",
+  "generated": "2026-11-01",
   "concepts": {
     "feat_00000001": {
       "term": "editor MIDI",
@@ -42,7 +42,7 @@
       "availability": "available"
     },
     "feat_00000010": {
-      "term": "generador de melodías",
+      "term": "generador melodías",
       "status": "pending",
       "availability": "available"
     },
