@@ -182,8 +182,9 @@ Write `.github/qa/audit-report.md` (overwrite):
 
 - Summary line: strings checked, concepts mapped, findings per check,
   target labels proposed, candidates submitted.
-- One section per check from step 3 (including "English label changes"), each a bulleted list of
-  `file:line key` → finding. Omit empty sections.
+- One section per check from step 3 (including "English label changes"),
+  each listing its findings in the **affected-string format** below. Omit
+  empty sections.
 - "Target labels proposed" — concept ID, English name, proposed es-es
   term, proposal status (or refusal reason).
 - "New-concept candidates" — en-US term, es-ES wording, frequency, plus
@@ -191,10 +192,42 @@ Write `.github/qa/audit-report.md` (overwrite):
   `hidden_previously_rejected` / `resurfaced_for_review`) and any `errors`.
 - "New since last audit" — at the top, right after the summary line: the
   findings, labels and candidates that were not in the previous report.
-  Write "Nothing new since last audit." if empty.
+  Each new finding lists its affected strings here in full too — never
+  "see below" or "the keys above". Write "Nothing new since last audit."
+  if empty.
 - If nothing to report: a single line "No drift found."
 
-Keep it terse — it becomes the pull request body.
+### Affected-string format (mandatory)
+
+Every finding about a concept or label — term mismatch, forbidden or
+`info` variant, status change, English label change, new concept used in
+strings, market availability, target label proposed — must name **each
+affected string individually**, so a reviewer can fix it without opening
+the files to find it:
+
+```
+- `feat_00000010` Melody Generator → Melody Composer
+  - `locales/en-US/dashboard.json:15` `nav.melody_generator`
+    - en-US: "Melody Generator"
+    - es-ES: "Generador de melodías" (expected term: "compositor de melodías")
+```
+
+- One bullet per string, with the full repo path and line, and the full
+  key path (`plan_features.melody_generator`, not `melody_generator`).
+- Quote the current string text verbatim: the en-US string for English
+  label findings, the es-ES string for es-es findings, both when the
+  finding concerns the pair. Quote the whole string if it is under ~120
+  characters; otherwise quote the sentence containing the term.
+- State the term that matched (old label, forbidden variant, etc.) and
+  the expected Black Ice term when there is one.
+- Never group or abbreviate strings: no `*` wildcards in keys, no
+  `136/138/140`, no "and N more", no "see below". Repeat the bullets in
+  every section the finding appears in.
+- Mentions only in `_notes` are listed the same way, marked `(note)`.
+- A finding that affects no string (e.g. a new concept used nowhere)
+  says "No strings affected." explicitly.
+
+Keep everything else terse — the report becomes the pull request body.
 
 ## 6. Decide whether to publish
 
