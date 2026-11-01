@@ -21,6 +21,10 @@ report instead of reporting the whole ontology as missing.
 - `list_concepts` for `es-es` — gives every concept with its es-es term,
   status (`approved` / `pending` / null) and availability (`available` /
   `planned` / `not_available` / null).
+- `list_concepts` for `en-us` — its `term` is each concept's current
+  **English label** (the wording en-US strings should use). Match concepts
+  across the two calls by `conceptId`, never by name: the ID is stable when
+  a concept is renamed, the label is not.
 - Call `check_term` (`es-es`) on **every** concept returned by
   `list_concepts` — not a sample, and regardless of whether it appears in
   the locale files (calls can run in parallel). This is the only source of
@@ -30,23 +34,31 @@ report instead of reporting the whole ontology as missing.
   defined. Use the variants in step 3.1/3.2: an es-ES string containing a
   forbidden variant is a finding even if `validate_translation` missed it.
 - If `.github/qa/audit-baseline.json` exists, load it: it holds the
-  `{conceptId: {term, status, availability}}` snapshot from the previous
-  audit. If it does not exist, this is the first run — report no status
-  changes and just write the baseline.
+  `{conceptId: {en_term, en_previous_terms, term, status, availability}}`
+  snapshot from the previous audit. If it does not exist, this is the first
+  run — report no status changes and just write the baseline. If a concept
+  in the baseline has no `en_term` yet, record the current one and report
+  no English label change for it this run.
 
 ## 2. Map concepts to strings
 
 For each key in `locales/en-US/**/*.json` (skip `_metadata` and `_notes`),
-find which ontology concepts the English string refers to (by concept name,
-case-insensitive, allowing plural/inflected forms such as
-"Comments & Markers" for "Comment & Marker"). Pair it with the same key in
-`locales/es-ES/`. Record file, key path and line number for each hit.
+find which ontology concepts the English string refers to (by the current
+en-us term or concept name, case-insensitive, allowing plural/inflected
+forms such as "Comments & Markers" for "Comment & Marker"). Also match the
+concept's **retired English labels**: its `en_previous_terms` in the
+baseline, plus the baseline `en_term` if it differs from the current one.
+A string that uses a retired label still maps to the concept, so its es-ES
+pair keeps being checked; record which label it matched for step 3.5.
+Pair it with the same key in `locales/es-ES/`. Record file, key path and
+line number for each hit.
 
 Also collect English domain terms that match **no** concept — these feed
 step 4b. Always include every named product feature in feature lists
 (e.g. `onboarding.plan_features.*`, `dashboard.nav.*`), even if it appears
 only once; for other music-production or UI nouns, include them only if
-they recur.
+they recur. A term that matches a retired English label is **not**
+ungoverned — it belongs to that concept and never goes to step 4b.
 
 ## 3. Run the checks
 
@@ -62,12 +74,25 @@ For every mapped (concept, es-ES string) pair:
    list `info` (non-preferred allowed variant) hits separately. Report how
    many strings were validated.
 3. **Status change** — compare against the baseline. Report concepts whose
-   term, status or availability changed since the last audit, with the
-   affected keys.
+   es-es term, status or availability changed since the last audit, with
+   the affected keys. Report concepts that are new since the baseline
+   once, as "new concept" (not a change).
 4. **Market availability** — flag strings that present a concept as part
    of an offer (plan feature lists, onboarding, upsell copy) when its es-es
    availability is `not_available` or `planned`. Treat `not_set` and null
    as unknown: list them once in the report, don't flag each string.
+
+Then, once per concept (not per es-ES string):
+
+5. **English label change** — if the current en-us term differs from the
+   baseline `en_term`, the concept was renamed in Black Ice. Report it as
+   `conceptId: "old label" → "new label"`, with every en-US `file:line key`
+   that still uses the old label (or any other retired label). Keep
+   reporting those keys on every run until en-US stops using the retired
+   label — the rename is the news only the first time, but the stale
+   strings are a finding each run. Do not judge whether the es-es term
+   should change too; note "es-es term unchanged: <term>" so a
+   terminologist can decide.
 
 Never edit any locale file. This run reports only.
 
@@ -99,7 +124,8 @@ as a finding, don't retry. Only propose where `check_term` returned
 
 ### 4b. No concept at all → new-concept candidate (`suggest_candidates`)
 
-Recurring domain terms from step 2 that match no concept. Send them in one
+Recurring domain terms from step 2 that match no concept (current or
+retired English label). Send them in one
 `suggest_candidates` call (max 50) with, per term:
 
 - `term`: the **English source term** from `locales/en-US/` (the concept
@@ -135,15 +161,28 @@ Write `.github/qa/audit-baseline.json`:
 ```json
 {
   "generated": "<ISO date>",
-  "concepts": { "<conceptId>": { "term": "...", "status": "...", "availability": "..." } }
+  "concepts": {
+    "<conceptId>": {
+      "en_term": "...",
+      "en_previous_terms": ["..."],
+      "term": "...",
+      "status": "...",
+      "availability": "..."
+    }
+  }
 }
 ```
+
+`en_term` is the current en-us term. `en_previous_terms` carries forward
+from the previous baseline; when `en_term` changed, append the old value to
+it (no duplicates; omit the field while it is empty). Never drop a retired
+label — it is how step 2 keeps recognising stale en-US strings.
 
 Write `.github/qa/audit-report.md` (overwrite):
 
 - Summary line: strings checked, concepts mapped, findings per check,
   target labels proposed, candidates submitted.
-- One section per check from step 3, each a bulleted list of
+- One section per check from step 3 (including "English label changes"), each a bulleted list of
   `file:line key` → finding. Omit empty sections.
 - "Target labels proposed" — concept ID, English name, proposed es-es
   term, proposal status (or refusal reason).
@@ -161,8 +200,9 @@ Keep it terse — it becomes the pull request body.
 
 Publish (commit, push, open a PR) **only if at least one** of these is true:
 
-- a status change was found (step 3.3), i.e. `audit-baseline.json` differs
-  from `main` in anything other than `generated`
+- a status change, new concept or English label change was found (steps
+  3.3 and 3.5), i.e. `audit-baseline.json` differs from `main` in anything
+  other than `generated`
 - a new `forbidden` or `info` flag, term mismatch or availability finding
   that was not in the previous report
 - `propose_translation` was called (successfully or refused)
