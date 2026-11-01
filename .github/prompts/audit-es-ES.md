@@ -50,8 +50,18 @@ concept's **retired English labels**: its `en_previous_terms` in the
 baseline, plus the baseline `en_term` if it differs from the current one.
 A string that uses a retired label still maps to the concept, so its es-ES
 pair keeps being checked; record which label it matched for step 3.5.
-Pair it with the same key in `locales/es-ES/`. Record file, key path and
-line number for each hit.
+Pair it with the same key in `locales/es-ES/`. For each hit record the
+**string ID**, file and line number.
+
+**String ID** = `<namespace>:<full.key.path>` — the namespace is the file
+name without `.json` (it matches `_metadata.namespace`), and the key path
+is the complete dot-joined path from the JSON root, including every parent
+object: `sample:sample_strings.field_key_helper`, never `field_key_helper`
+or `sample.json:12`. Derive IDs mechanically by parsing the JSON (e.g. a
+short Python script that walks every file and prints ID, line and value),
+not by reading lines by eye, and check each reported ID exists in both
+`locales/en-US/` and `locales/es-ES/`. The same ID identifies the en-US
+string and its es-ES pair.
 
 Also collect English domain terms that match **no** concept — these feed
 step 4b. Always include every named product feature in feature lists
@@ -206,14 +216,14 @@ affected string individually**, so a reviewer can fix it without opening
 the files to find it:
 
 ```
-- `feat_00000010` Melody Generator → Melody Composer
-  - `locales/en-US/dashboard.json:15` `nav.melody_generator`
+- `feat_00000010` Melody Generator → Melody Composer — 3 strings
+  - `dashboard:nav.melody_generator` (`locales/*/dashboard.json:15`)
     - en-US: "Melody Generator"
     - es-ES: "Generador de melodías" (expected term: "compositor de melodías")
 ```
 
-- One bullet per string, with the full repo path and line, and the full
-  key path (`plan_features.melody_generator`, not `melody_generator`).
+- One bullet per string, **led by its string ID** (step 2), followed by
+  the file and line. State how many strings each finding affects.
 - Quote the current string text verbatim: the en-US string for English
   label findings, the es-ES string for es-es findings, both when the
   finding concerns the pair. Quote the whole string if it is under ~120
@@ -226,6 +236,12 @@ the files to find it:
 - Mentions only in `_notes` are listed the same way, marked `(note)`.
 - A finding that affects no string (e.g. a new concept used nowhere)
   says "No strings affected." explicitly.
+
+End the report with **"Affected string IDs"**: one deduplicated, sorted
+code block with every string ID named by any finding, one per line, each
+followed by the concept IDs and checks that flagged it, e.g.
+`dashboard:nav.melody_generator  feat_00000010  label-change, term-match`.
+This is the fix list.
 
 Keep everything else terse — the report becomes the pull request body.
 
