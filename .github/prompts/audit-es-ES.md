@@ -21,9 +21,14 @@ report instead of reporting the whole ontology as missing.
 - `list_concepts` for `es-es` — gives every concept with its es-es term,
   status (`approved` / `pending` / null) and availability (`available` /
   `planned` / `not_available` / null).
-- For every concept whose English name or es-es term appears in the
-  locale files (step 2), call `check_term` (`es-es`) to get allowed and
-  forbidden variants — `list_concepts` does not return them.
+- Call `check_term` (`es-es`) on **every** concept returned by
+  `list_concepts` — not a sample, and regardless of whether it appears in
+  the locale files (calls can run in parallel). This is the only source of
+  allowed/forbidden variants and notes; `list_concepts` does not return
+  them, and `validate_translation` only scans approved terms. Report in the
+  summary how many concepts were checked and how many have variants
+  defined. Use the variants in step 3.1/3.2: an es-ES string containing a
+  forbidden variant is a finding even if `validate_translation` missed it.
 - If `.github/qa/audit-baseline.json` exists, load it: it holds the
   `{conceptId: {term, status, availability}}` snapshot from the previous
   audit. If it does not exist, this is the first run — report no status
