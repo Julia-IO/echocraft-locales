@@ -96,8 +96,13 @@ Then, once per concept (not per es-ES string):
 
 5. **English label change** — if the current en-us term differs from the
    baseline `en_term`, the concept was renamed in Black Ice. Report it as
-   `conceptId: "old label" → "new label"`, with every en-US `file:line key`
-   that still uses the old label (or any other retired label). Keep
+   `conceptId: "old label" → "new label"`, then list every string that
+   uses the concept in the affected-string format (step 5), marking each
+   one **stale** (still uses a retired label) or **in sync** (uses the
+   current label). If no string uses the concept, write "No strings
+   affected." Retired labels are every label in `en_previous_terms`; the
+   current `en_term` is never retired, even if it was retired before (a
+   revert moves it back out of the list). Keep
    reporting those keys on every run until en-US stops using the retired
    label — the rename is the news only the first time, but the stale
    strings are a finding each run. Do not judge whether the es-es term
@@ -205,6 +210,13 @@ Write `.github/qa/audit-report.md` (overwrite):
   Each new finding lists its affected strings here in full too — never
   "see below" or "the keys above". Write "Nothing new since last audit."
   if empty.
+- "Resolved since last audit" — right after "New since last audit": every
+  finding or flagged string ID in the previous report that is no longer
+  flagged, each with a one-line reason (string edited, Black Ice term or
+  availability changed back, judged not to apply on review, etc.). Never
+  drop a previous finding silently. If the reason is a judgment call,
+  say so, so a reviewer can disagree. Omit the section if nothing was
+  resolved.
 - If nothing to report: a single line "No drift found."
 
 ### Affected-string format (mandatory)
@@ -237,11 +249,27 @@ the files to find it:
 - A finding that affects no string (e.g. a new concept used nowhere)
   says "No strings affected." explicitly.
 
-End the report with **"Affected string IDs"**: one deduplicated, sorted
-code block with every string ID named by any finding, one per line, each
-followed by the concept IDs and checks that flagged it, e.g.
+End the report with **"Affected string IDs"**, split by what each string
+needs. Each group is one deduplicated, sorted code block, one ID per line,
+followed by the concept IDs and checks that put it there, e.g.
 `dashboard:nav.melody_generator  feat_00000010  label-change, term-match`.
-This is the fix list.
+Write "None." for an empty group. A string goes in the first group that
+applies:
+
+1. **Needs a string fix** — the en-US or es-ES text should change: term
+   mismatch against an **approved** term, forbidden variant, stale en-US
+   string using a retired label.
+2. **Needs a product or terminology decision** — no string edit until
+   someone decides: availability findings (`not_available` / `planned`),
+   mismatches against a `pending` term, `info` variants, anything where
+   Black Ice itself may be wrong (e.g. a likely typo in a term).
+3. **Changed in Black Ice, strings already in sync** — listed for
+   traceability only, no action: status changes, reverts and newly
+   applied labels where the strings already use the current term.
+
+Unknown availability (`not_set` / null) goes in group 2 only if the
+string presents the concept as part of an offer. Don't put a string in a
+group just because its concept was mentioned elsewhere in the report.
 
 Keep everything else terse — the report becomes the pull request body.
 
