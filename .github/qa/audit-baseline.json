@@ -50,11 +50,12 @@
       "availability": "available"
     },
     "feat_00000010": {
-      "en_term": "Melody Composer",
+      "en_term": "Melody Generator",
       "en_previous_terms": [
-        "Melody Generator"
+        "Melody Generator",
+        "Melody Composer"
       ],
-      "term": "compositor de melodías",
+      "term": "generador de melodías",
       "status": "pending",
       "availability": "available"
     },
@@ -162,9 +163,9 @@
     },
     "feat_00000272": {
       "en_term": "AI Composition",
-      "term": null,
-      "status": null,
-      "availability": null
+      "term": "composición con IA",
+      "status": "pending",
+      "availability": "not_set"
     },
     "plan_00000001": {
       "en_term": "Creator Starter",
