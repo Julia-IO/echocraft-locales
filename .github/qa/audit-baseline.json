@@ -2,161 +2,193 @@
   "generated": "2026-10-31",
   "concepts": {
     "feat_00000001": {
+      "en_term": "MIDI Editor",
       "term": "editor MIDI",
       "status": "approved",
       "availability": "available"
     },
     "feat_00000002": {
+      "en_term": "Pattern Sequencer",
       "term": "secuenciador de patrones",
       "status": "pending",
       "availability": "available"
     },
     "feat_00000003": {
+      "en_term": "Virtual Instrument",
       "term": "instrumento virtual",
       "status": "pending",
       "availability": "available"
     },
     "feat_00000004": {
+      "en_term": "Multitrack Recording",
       "term": "grabación multipista",
       "status": "approved",
       "availability": "available"
     },
     "feat_00000005": {
+      "en_term": "MP3 Export",
       "term": "exportación MP3",
       "status": "approved",
       "availability": "available"
     },
     "feat_00000006": {
+      "en_term": "Piano Roll",
       "term": "piano roll",
       "status": "pending",
       "availability": "available"
     },
     "feat_00000008": {
+      "en_term": "Sample Library",
       "term": "biblioteca de samples",
       "status": "pending",
       "availability": "available"
     },
     "feat_00000009": {
+      "en_term": "Effects Rack",
       "term": "rack de efectos",
       "status": "approved",
       "availability": "available"
     },
     "feat_00000010": {
+      "en_term": "Melody Generator",
       "term": "generador de melodías",
       "status": "pending",
       "availability": "available"
     },
     "feat_00000011": {
+      "en_term": "Mastering Chain",
       "term": "cadena de masterización",
       "status": "pending",
       "availability": "available"
     },
     "feat_00000012": {
+      "en_term": "Style Transfer",
       "term": "transferencia de estilo",
       "status": "pending",
       "availability": "available"
     },
     "feat_00000013": {
+      "en_term": "Chord Progression Generator",
       "term": "generador de progresiones de acordes",
       "status": "approved",
       "availability": "available"
     },
     "feat_00000014": {
+      "en_term": "WAV/FLAC Export",
       "term": "exportación WAV/FLAC",
       "status": "pending",
       "availability": "available"
     },
     "feat_00000015": {
+      "en_term": "Shared Project",
       "term": "proyecto compartido",
       "status": "pending",
       "availability": "available"
     },
     "feat_00000016": {
+      "en_term": "Comment & Marker",
       "term": "comentario y marcador",
       "status": "approved",
       "availability": "not_available"
     },
     "feat_00000017": {
+      "en_term": "Version History",
       "term": "historial de versiones",
       "status": "pending",
       "availability": "planned"
     },
     "feat_00000018": {
+      "en_term": "Jam Session",
       "term": "jam session",
       "status": "pending",
       "availability": "available"
     },
     "feat_00000019": {
+      "en_term": "Loudness Analyzer",
       "term": "analizador de loudness",
       "status": "pending",
       "availability": "available"
     },
     "feat_00000020": {
+      "en_term": "One-Click Distribution",
       "term": "distribución con un clic",
       "status": "pending",
       "availability": "available"
     },
     "feat_00000021": {
+      "en_term": "Track Metadata Editor",
       "term": "editor de metadatos de pista",
       "status": "pending",
       "availability": "available"
     },
     "feat_00000266": {
+      "en_term": "Punch-In Recording",
       "term": "grabación con Punch-In",
       "status": "approved",
       "availability": "available"
     },
     "feat_00000267": {
+      "en_term": "Arrangement Timeline",
       "term": "línea de tiempo de arreglos",
       "status": "pending",
       "availability": "not_set"
     },
     "feat_00000268": {
+      "en_term": "Scale Assistant",
       "term": "asistente de escalas",
       "status": "pending",
       "availability": "not_set"
     },
     "feat_00000269": {
+      "en_term": "Stem Separation",
       "term": null,
       "status": null,
       "availability": null
     },
     "plan_00000001": {
+      "en_term": "Creator Starter",
       "term": "Creator Starter",
       "status": "pending",
       "availability": "available"
     },
     "plan_00000002": {
+      "en_term": "Creator Pro",
       "term": "Creator Pro",
       "status": "pending",
       "availability": "available"
     },
     "plan_00000003": {
+      "en_term": "Creator Max",
       "term": "Creator Max",
       "status": "pending",
       "availability": "available"
     },
     "plan_00000004": {
+      "en_term": "Studio Starter",
       "term": "Studio Starter",
       "status": "pending",
       "availability": "planned"
     },
     "plan_00000005": {
+      "en_term": "Studio Pro",
       "term": "Studio Pro",
       "status": "pending",
       "availability": "planned"
     },
     "plan_00000006": {
+      "en_term": "Studio Max",
       "term": "Studio Max",
       "status": "pending",
       "availability": "planned"
     },
     "prod_00000001": {
+      "en_term": "Creator",
       "term": "Creator",
       "status": "pending",
       "availability": "available"
     },
     "prod_00000002": {
+      "en_term": "Studio",
       "term": "Studio",
       "status": "pending",
       "availability": "planned"
