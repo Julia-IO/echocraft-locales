@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-01",
+  "generated": "2026-11-09",
   "concepts": {
     "feat_00000001": {
       "en_term": "MIDI Editor",
@@ -52,7 +52,6 @@
     "feat_00000010": {
       "en_term": "Melody Generator",
       "en_previous_terms": [
-        "Melody Generator",
         "Melody Composer"
       ],
       "term": "generador de melodías",
@@ -75,7 +74,7 @@
       "en_term": "Chord Progression Generator",
       "term": "generador de progresiones de acordes",
       "status": "approved",
-      "availability": "available"
+      "availability": "planned"
     },
     "feat_00000014": {
       "en_term": "WAV/FLAC Export",
@@ -134,8 +133,8 @@
     "feat_00000267": {
       "en_term": "Arrangement Timeline",
       "term": "línea de tiempo de arreglos",
-      "status": "pending",
-      "availability": "not_set"
+      "status": "approved",
+      "availability": "available"
     },
     "feat_00000268": {
       "en_term": "Scale Assistant",
