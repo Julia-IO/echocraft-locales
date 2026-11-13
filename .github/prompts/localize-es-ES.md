@@ -61,9 +61,10 @@ Steps:
    natural neutral-Spanish equivalent and sort the term into one of two
    buckets (see step 4b):
    - **Concept exists, no es-es term** (`check_term`/`list_concepts` finds
-     the concept but `term` is null): keep it for the QA report only. Do
-     **not** send it to `suggest_candidates`. A concept with a missing
-     target label is a translation gap, not a new concept.
+     the concept but `term` is null): propose your wording with
+     `propose_translation` (step 4b). Do **not** send it to
+     `suggest_candidates`. A concept with a missing target label is a
+     translation gap, not a new concept.
    - **No concept at all** (no match on any concept name or English
      label): this is a new-concept candidate for step 4b.
 3. Draft the copy per the criteria above, respecting the market profile's
@@ -130,10 +131,33 @@ Steps:
 - This is advisory only. Never fail the build or refuse to write files
   because of a QA finding — log it.
 
-## 4b. Send new-concept candidates to Black Ice (`suggest_candidates`)
+## 4b. Write terminology gaps back to Black Ice
 
-After the QA pass, send every term from the "no concept at all" bucket in
-**one** `suggest_candidates` call (max 50), with, per term:
+After the QA pass, write both buckets from step 3.2 back to Black Ice, so
+nothing stays only in the report. Use the same wording you wrote into
+`locales/es-ES/`. Where the UI string uses a verb or shortened form
+(e.g. a button), propose the noun/feature-name form as the term and
+mention the UI form in the notes.
+
+### Concept exists, no es-es term → `propose_translation`
+
+One call per concept:
+
+- `concept_id`: the concept ID from `check_term`/`list_concepts`
+- `locale`: `es-es`
+- `term`: your es-ES term (lowercase unless it is a proper name, matching
+  how other es-es terms are stored)
+- `reason`: "Missing es-es term; used in <string IDs> (localize-es run)"
+- `notes`: UI context (surface, length constraint, any short UI form used)
+
+The term is added as PENDING. Black Ice never approves it automatically
+and refuses markets that already have an approved term; a refusal is
+fine, just count it.
+
+### No concept at all → `suggest_candidates`
+
+Send every term from this bucket in **one** `suggest_candidates` call
+(max 50), with, per term:
 
 - `term`: the **English source term** as it appears in `locales/en-US/`
   (the concept would be created in the source language)
@@ -142,9 +166,12 @@ After the QA pass, send every term from the "no concept at all" bucket in
 - `definition`: one sentence inferred from the strings
 - `frequency`: number of changed en-US strings using it
 - `source_url`: `https://github.com/Julia-IO/echocraft-locales/blob/main/locales/en-US/<file>`
+- `translations`: `[{ "locale": "es-es", "term": "<your es-ES wording>",
+  "notes": "Context: <UI surface / string IDs>" }]`, so the concept and
+  its translation can be approved together. If the tool's schema has no
+  `translations` field, leave it out and put the es-ES wording in
+  `source_note` instead.
 - `source_note`: the string IDs it appears in (`<namespace>:<key.path>`)
-  and the es-ES wording you used for it, so the terminologist has the
-  target label ready
 - `confidence`: higher when the term recurs across keys or files
 
 Rules:
@@ -156,7 +183,12 @@ Rules:
 - If the call fails (permission, network, validation), do not retry more
   than once and never block the run: list the terms in the QA report under
   "Needs human review" with the error, so nothing is lost.
-- `suggest_candidates` is the only Black Ice write tool you may call.
+- The same failure rule applies to `propose_translation`: list the
+  concept under "Needs human review" with the error.
+- `propose_translation` and `suggest_candidates` are the only Black Ice
+  write tools you may call. Never call `set_concept_definition`,
+  `set_market_availability`, `add_relationship` or
+  `create_relationship_type`.
 
 ## 5. Write the QA report
 
@@ -171,8 +203,10 @@ Create `.github/qa/qa-report.md` (overwrite any previous run) with:
   "3 candidates sent to the Black Ice queue (2 added, 1 repeat)". Do not
   list the terms. Only if the call failed, list them under "Needs human
   review" with the error.
-- **Concepts without an es-es term**: a bulleted list (concept ID, English
-  name, the es-ES wording you used). These were not sent to the queue.
+- **Proposed es-es terms**: one line only: how many `propose_translation`
+  calls were made and how many were accepted (pending) or refused, e.g.
+  "2 es-es terms proposed in Black Ice (2 pending)". Do not list them,
+  except failed calls under "Needs human review".
 - A bulleted list of structural i18n issues (plurals, concatenation, etc.)
   from step 4.
 - A bulleted list of consistency/drift concerns from step 4.
