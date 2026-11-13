@@ -49,6 +49,28 @@ copy that:
   labels, badges), prioritize a short, natural phrase over a padded literal
   one; when in doubt, look at the character count of the English source as
   a rough ceiling and write to fit it, not past it.
+- **never trades a governed feature name for length.** See "Feature names
+  are never dropped" below.
+
+### Feature names are never dropped
+
+If the en-US source contains the name of a Black Ice concept (a feature,
+product or plan name; also when a `_notes` entry says it is an ontology
+feature name), the es-ES string **must contain that concept's es-es term**
+(approved, or pending if that is all there is, or the one you propose in
+step 4b). This applies to every surface, including buttons, tabs and nav
+labels.
+
+- Never drop the term, replace it with a pronoun or generic noun
+  ("la herramienta"), or turn it into a verb phrase ("Distribuir con un
+  clic" instead of "distribución con un clic") to save space.
+- Shorten everything **around** the term instead (verb, articles,
+  possessives), as far as that still reads naturally.
+- If the string still doesn't fit the surface's length budget, write it
+  anyway with the term intact and add it to **"Needs design review"** in
+  the QA report. Length overflow on a governed name is an i18n design bug
+  (fixed-width UI), not something the translation should hide.
+- Generic, non-governed words in the source may still be adapted freely.
 
 Steps:
 
@@ -210,6 +232,12 @@ Create `.github/qa/qa-report.md` (overwrite any previous run) with:
 - A bulleted list of structural i18n issues (plurals, concatenation, etc.)
   from step 4.
 - A bulleted list of consistency/drift concerns from step 4.
+- **Needs design review**: one bullet per string that kept a governed
+  feature name but exceeds its length budget, with the string ID, the
+  es-ES text, its character count vs. the en-US character count (and the
+  limit from `_notes` or the market profile, if one is stated), and the
+  term that caused it. These are design/i18n issues, not translation
+  errors.
 - If a section has nothing to flag, omit it. If nothing to flag anywhere,
   write a single line: "No issues found."
 
