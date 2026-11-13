@@ -1,0 +1,46 @@
+{
+  "_metadata": {
+    "product": "ECHOCRAFT",
+    "namespace": "export",
+    "locale": "en-US",
+    "version": "1.0.0",
+    "generated": "2026-11-13",
+    "scope_note": "Export & release flow: export dialog, mastering/loudness check, stems, metadata and distribution. Error strings stay in errors.*."
+  },
+
+  "export": {
+    "dialog_title": "Export your track",
+    "format_label": "Format",
+    "format_wav_flac_hint": "WAV/FLAC Export keeps full quality — best for mastering and distribution.",
+    "format_mp3_hint": "MP3 Export creates a smaller file that's easy to share and preview.",
+    "mastering_chain_toggle": "Apply Mastering Chain",
+    "loudness_check_title": "Loudness Analyzer",
+    "loudness_result": "Integrated loudness: {lufs} LUFS (target {target_lufs} LUFS)",
+    "loudness_too_loud_warning": "Your track is louder than most streaming platforms allow. It may be turned down on playback.",
+    "stems_option": "Export stems with Stem Separation",
+    "stems_count_singular": "{count} stem ready",
+    "stems_count_plural": "{count} stems ready",
+    "metadata_cta": "Edit details in the Track Metadata Editor",
+    "distribution_cta": "Release with One-Click Distribution",
+    "progress_label": "Exporting {track_name}… {percent}%",
+    "success_toast": "Export complete. Your file is ready to download.",
+
+    "_notes": {
+      "dialog_title": "Modal title. Keep short.",
+      "format_label": "Field label above the format selector. One word if possible.",
+      "format_wav_flac_hint": "Helper text under the WAV/FLAC option. 'WAV/FLAC Export' is an ontology feature name. WAV and FLAC are never translated.",
+      "format_mp3_hint": "Helper text under the MP3 option. 'MP3 Export' is an ontology feature name. MP3 is never translated.",
+      "mastering_chain_toggle": "Toggle label. 'Mastering Chain' is an ontology feature name. [EXPANSION RISK] Toggle row has limited width.",
+      "loudness_check_title": "Panel title. 'Loudness Analyzer' is an ontology feature name.",
+      "loudness_result": "[PLACEHOLDER] {lufs} and {target_lufs} are decimal numbers formatted at runtime (e.g. '-14.0'). LUFS is a technical unit — do not translate.",
+      "loudness_too_loud_warning": "Inline warning banner. Friendly, not alarming.",
+      "stems_option": "Checkbox label. 'Stem Separation' is an ontology feature name. [EXPANSION RISK]",
+      "stems_count_singular": "[PLURAL] {count} = integer. Apply ICU plural rules for target locale.",
+      "stems_count_plural": "[PLURAL] See singular note.",
+      "metadata_cta": "Secondary button/link. 'Track Metadata Editor' is an ontology feature name.",
+      "distribution_cta": "Primary button. 'One-Click Distribution' is an ontology feature name. [EXPANSION RISK] Button width is fixed.",
+      "progress_label": "[PLACEHOLDER] {track_name} is user-generated content — do not translate. {percent} is an integer 0–100.",
+      "success_toast": "[EXPANSION RISK] Toast with limited space."
+    }
+  }
+}
