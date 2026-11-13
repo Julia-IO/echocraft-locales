@@ -51,7 +51,6 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          show_full_output: true  # TEMP: diagnose is_error failure, remove before merge
           prompt: ${{ steps.load_prompt.outputs.content }}
           claude_args: |
             --mcp-config /tmp/black-ice-mcp.json
