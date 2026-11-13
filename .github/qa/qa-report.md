@@ -1,26 +1,14 @@
-**es-ES sync:** 15 keys translated (`export.json`, new file), 8 flagged. `validate_translation`: 0 violations.
-
-### Grammar / placeholder agreement
-- `export.loudness_result`: `{lufs}`/`{target_lufs}` must render with a decimal comma in es-ES (`-14,0`, not `-14.0`). Please confirm the runtime number formatting is locale-aware. "Loudness" is treated as masculine ("Loudness integrado"), following common Spanish audio usage.
-- `export.progress_label`: wrote `{percent} %` with a space before the sign, per RAE/es-ES convention. `{track_name}` is user content and is left untranslated.
-- `export.stems_count_*`: "stem" is treated as masculine ("listo/listos").
+**es-ES sync:** 1 key retranslated (`export.stems_option`), 3 flagged. The other 14 `export.*` keys were already synced and are unchanged. `validate_translation`: 0 violations.
 
 ### Black Ice ontology terms used
-- WAV/FLAC Export → exportación WAV/FLAC (pending)
-- MP3 Export → exportación MP3 (approved)
-- Mastering Chain → cadena de masterización (pending). The toggle label is 31 chars against 21 in EN, so it may not fit the limited-width toggle row.
-- Loudness Analyzer → analizador de loudness (approved)
-- Track Metadata Editor → editor de metadatos de pista (pending)
-- One-Click Distribution → distribución con un clic (approved). The fixed-width button uses the verb form "Distribuir con un clic" (22 chars). Please confirm this adaptation is acceptable.
+- Stem Export (feat_00000273): no es-ES term (`term`/`status` null; queried as `es-es`). Used "stems".
 
 ### New term candidates
-- Stem Separation (feat_00000269): no es-ES term. Used "separación de stems".
-- Stem Export (feat_00000273): no es-ES term. Not used directly, but likely the correct concept for `stems_option` (see below).
+- Stem Export (feat_00000273): proposed "exportación de stems" (feature name) and "Exportar stems" (UI action). The market profile golden example "Exportar pistas separadas (stems)" is 33 chars, which is over the 32-char maximum and nearly 3× the 12-char EN source on an [EXPANSION RISK] checkbox, so I used the short form.
 
 ### Structural i18n issues
-- `export.stems_count_singular` / `_plural`: these are two separate keys, not one ICU plural message. Spanish works here because it has the same one/other split, but please migrate to an ICU `{count, plural, …}` message.
-- `export.stems_option`: "Export stems with Stem Separation" uses the Stem Separation concept (AI split of a single audio file) in the export dialog. Stem Export (per-track/bus export) seems more likely. The es-ES text "Exportar stems con separación de stems" is redundant and longer than EN (38 vs 33 chars, [EXPANSION RISK]). **Needs human review** of both the source concept and the copy.
+- `export.stems_count_singular` / `_plural` (carried over): these are still two separate keys, not one ICU `{count, plural, …}` message. Spanish's one/other split works for now, but please migrate.
 
 ### Consistency / drift
-- The terminology rules say "stems" should be clarified on first mention ("pistas separadas (stems)"). There's no room for that in the checkbox, so bare "stems" is used.
-- `export.metadata_cta` changed from "Edit details in…" to "Abrir editor de metadatos de pista" to avoid repeating "editar … editor".
+- `export.stems_option`: the change from "Exportar stems con separación de stems" to "Exportar stems" drops the wrong Stem Separation concept and matches `stems_count_*` ("stem listo/stems listos").
+- The terminology rules ask for "stems" to be clarified as "pistas separadas" on first mention. There's no room for that in this checkbox. Consider a tooltip ("Exporta cada pista o bus como un archivo de audio independiente."). Avoid "separación" wording here so it doesn't get confused with Stem Separation.
