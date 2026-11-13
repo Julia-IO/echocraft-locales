@@ -1,12 +1,14 @@
-**1 key translated, 0 flagged for human review.** (`dashboard.header.search_placeholder` → "Buscar proyectos y plugins"; validate_translation: no flags)
+**es-ES sync:** 1 key retranslated (`export.stems_option`), 3 flagged. The other 14 `export.*` keys were already synced and are unchanged. `validate_translation`: 0 violations.
 
-**Black Ice ontology terms used**
-- None. No ontology concept matches "project", "plugin" or "search". The nearest match, Shared Project → "proyecto compartido" (pending), doesn't apply here.
+### Black Ice ontology terms used
+- Stem Export (feat_00000273): no es-ES term (`term`/`status` null; queried as `es-es`). Used "stems".
 
-**New term candidates**
-- plugin → "plugins": kept the English loanword, which is standard in Spanish DAW usage; "complemento" was rejected as too generic. This is the first use in es-ES, so it needs an approved ontology term.
-- project → "proyectos": matches existing es-ES usage (`nav.projects`, `projects.*`), but there is no approved ontology concept for it.
-- search → "Buscar": standard UI verb, no concept found.
+### New term candidates
+- Stem Export (feat_00000273): proposed "exportación de stems" (feature name) and "Exportar stems" (UI action). The market profile golden example "Exportar pistas separadas (stems)" is 33 chars, which is over the 32-char maximum and nearly 3× the 12-char EN source on an [EXPANSION RISK] checkbox, so I used the short form.
 
-**Consistency/drift**
-- The en-US source dropped the trailing ellipsis ("…"), so the es-ES string drops it too. Other search or placeholder fields, if any are added later, should follow the same style.
+### Structural i18n issues
+- `export.stems_count_singular` / `_plural` (carried over): these are still two separate keys, not one ICU `{count, plural, …}` message. Spanish's one/other split works for now, but please migrate.
+
+### Consistency / drift
+- `export.stems_option`: the change from "Exportar stems con separación de stems" to "Exportar stems" drops the wrong Stem Separation concept and matches `stems_count_*` ("stem listo/stems listos").
+- The terminology rules ask for "stems" to be clarified as "pistas separadas" on first mention. There's no room for that in this checkbox. Consider a tooltip ("Exporta cada pista o bus como un archivo de audio independiente."). Avoid "separación" wording here so it doesn't get confused with Stem Separation.
