@@ -1,17 +1,14 @@
-**10 keys translated (`mix_tools.json`, new file), 3 flagged.**
+**es-ES sync:** 1 key retranslated (`export.stems_option`), 3 flagged. The other 14 `export.*` keys were already synced and are unchanged. `validate_translation`: 0 violations.
 
-**Black Ice ontology terms used**
-- editor MIDI (MIDI Editor): approved
-- separación de stems (Stem Separation): no es-es term; proposed. Helper text only, the button uses "Separar en stems".
-- exportación de stems (Stem Export): no es-es term; proposed. Matches the pattern of "exportación MP3" / "exportación WAV/FLAC".
-- asistente de mezcla inteligente (Smart Mix Assistant): no es-es term; proposed. It doesn't appear in the UI; the button uses the action form.
-- asistente de letras (Lyric Assistant): no es-es term; proposed. It doesn't appear in the UI; the button uses the action form.
+### Black Ice ontology terms used
+- Stem Export (feat_00000273): no es-ES term (`term`/`status` null; queried as `es-es`). Used "stems".
 
-**New-concept candidates:** 3 candidates sent to the Black Ice queue (2 added, 1 repeat).
+### New term candidates
+- Stem Export (feat_00000273): proposed "exportación de stems" (feature name) and "Exportar stems" (UI action). The market profile golden example "Exportar pistas separadas (stems)" is 33 chars, which is over the 32-char maximum and nearly 3× the 12-char EN source on an [EXPANSION RISK] checkbox, so I used the short form.
 
-**Proposed es-es terms:** 4 es-es terms proposed in Black Ice (4 accepted, returned status "applied" rather than "pending"; please confirm they were not auto-approved).
+### Structural i18n issues
+- `export.stems_count_singular` / `_plural` (carried over): these are still two separate keys, not one ICU `{count, plural, …}` message. Spanish's one/other split works for now, but please migrate.
 
-**Consistency / drift**
-- `smart_mix_cta` / `lyric_assistant_cta` / `stem_separation_cta`: to stay within the 22-character button limit, the buttons use verb + object ("Equilibrar mi mezcla", "Pedir ideas de letra", "Separar en stems") and drop the feature name the English source includes. Check whether the product wants the feature name visible.
-- `stem_separation_hint`: the profile asks for "stems" to be explained on first mention ("pistas separadas"). It was left out for length. "Tú eliges qué conservar." was added as the AI control signal.
-- `panel_title`: the en-US scope says "Mix & AI tools", but the header reads only "Herramientas de mezcla", following the source "Mix tools".
+### Consistency / drift
+- `export.stems_option`: the change from "Exportar stems con separación de stems" to "Exportar stems" drops the wrong Stem Separation concept and matches `stems_count_*` ("stem listo/stems listos").
+- The terminology rules ask for "stems" to be clarified as "pistas separadas" on first mention. There's no room for that in this checkbox. Consider a tooltip ("Exporta cada pista o bus como un archivo de audio independiente."). Avoid "separación" wording here so it doesn't get confused with Stem Separation.
