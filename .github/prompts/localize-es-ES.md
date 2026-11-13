@@ -167,10 +167,10 @@ Send every term from this bucket in **one** `suggest_candidates` call
 - `frequency`: number of changed en-US strings using it
 - `source_url`: `https://github.com/Julia-IO/echocraft-locales/blob/main/locales/en-US/<file>`
 - `translations`: `[{ "locale": "es-es", "term": "<your es-ES wording>",
-  "notes": "Context: <UI surface / string IDs>" }]`, so the concept and
-  its translation can be approved together. If the tool's schema has no
-  `translations` field, leave it out and put the es-ES wording in
-  `source_note` instead.
+  "notes": "Context: <UI surface / string IDs>" }]`. Content Operations
+  reviews the English term and the es-ES translation side by side; when
+  the candidate is approved, the translation is added as pending
+  automatically, so do not also call `propose_translation` for it.
 - `source_note`: the string IDs it appears in (`<namespace>:<key.path>`)
 - `confidence`: higher when the term recurs across keys or files
 
