@@ -50,7 +50,13 @@ jobs:
       - name: Run Claude Code localization pass
         uses: anthropics/claude-code-action@v1
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Workload identity federation: the job's GitHub OIDC token (id-token: write)
+          # is exchanged for a short-lived Anthropic token. No static API key.
+          # These are identifiers, not secrets.
+          anthropic_federation_rule_id: fdrl_01Moj3CdSQg1z7gXmCT5LjkR
+          anthropic_organization_id: cda112b5-5618-4b2a-9047-0a041a115c1a
+          anthropic_service_account_id: svac_01CHrMYLBJHkZkAXLJ2P8eZp
+          anthropic_workspace_id: wrkspc_01XLfYZfSo186ciVyFN11jM2
           prompt: ${{ steps.load_prompt.outputs.content }}
           claude_args: |
             --mcp-config /tmp/black-ice-mcp.json
