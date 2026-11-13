@@ -58,8 +58,14 @@ Steps:
    get the approved es-ES term, its status, and any forbidden alternatives.
    Never use a term marked
    forbidden or deprecated. Where no approved term exists, choose the most
-   natural neutral-Spanish equivalent and flag it in the QA report as a new
-   term candidate.
+   natural neutral-Spanish equivalent and sort the term into one of two
+   buckets (see step 4b):
+   - **Concept exists, no es-es term** (`check_term`/`list_concepts` finds
+     the concept but `term` is null): keep it for the QA report only. Do
+     **not** send it to `suggest_candidates`. A concept with a missing
+     target label is a translation gap, not a new concept.
+   - **No concept at all** (no match on any concept name or English
+     label): this is a new-concept candidate for step 4b.
 3. Draft the copy per the criteria above, respecting the market profile's
    register/formality.
 4. **Placeholders**: locate every placeholder in the source
@@ -124,6 +130,34 @@ Steps:
 - This is advisory only. Never fail the build or refuse to write files
   because of a QA finding — log it.
 
+## 4b. Send new-concept candidates to Black Ice (`suggest_candidates`)
+
+After the QA pass, send every term from the "no concept at all" bucket in
+**one** `suggest_candidates` call (max 50), with, per term:
+
+- `term`: the **English source term** as it appears in `locales/en-US/`
+  (the concept would be created in the source language)
+- `locale`: `en-us`
+- `class_name`: your best match from `list_classes` (omit if none fits)
+- `definition`: one sentence inferred from the strings
+- `frequency`: number of changed en-US strings using it
+- `source_url`: `https://github.com/Julia-IO/echocraft-locales/blob/main/locales/en-US/<file>`
+- `source_note`: the string IDs it appears in (`<namespace>:<key.path>`)
+  and the es-ES wording you used for it, so the terminologist has the
+  target label ready
+- `confidence`: higher when the term recurs across keys or files
+
+Rules:
+- Only domain terms (product features, Echocraft-specific nouns, DAW/audio
+  concepts). Never send generic UI words ("search", "download", "ready").
+- Skip the call entirely if the bucket is empty.
+- Repeats are fine: the queue deduplicates server-side and suppresses
+  previously rejected terms. The response counts are the only receipt.
+- If the call fails (permission, network, validation), do not retry more
+  than once and never block the run: list the terms in the QA report under
+  "Needs human review" with the error, so nothing is lost.
+- `suggest_candidates` is the only Black Ice write tool you may call.
+
 ## 5. Write the QA report
 
 Create `.github/qa/qa-report.md` (overwrite any previous run) with:
@@ -131,8 +165,14 @@ Create `.github/qa/qa-report.md` (overwrite any previous run) with:
 - A short summary line: how many keys translated, how many flagged.
 - A bulleted list of grammar/placeholder-agreement concerns from step 3.4.
 - A bulleted list of the Black Ice ontology terms used listing each term, the status and any brief note if relevant.
-- A bulleted list of new term candidates (no approved Black Ice term found)
-  from step 3.2.
+- **New-concept candidates**: one line only, from the `suggest_candidates`
+  response: how many terms were sent to the Black Ice Candidates queue and
+  the counts it returned (added / repeats / previously rejected), e.g.
+  "3 candidates sent to the Black Ice queue (2 added, 1 repeat)". Do not
+  list the terms. Only if the call failed, list them under "Needs human
+  review" with the error.
+- **Concepts without an es-es term**: a bulleted list (concept ID, English
+  name, the es-ES wording you used). These were not sent to the queue.
 - A bulleted list of structural i18n issues (plurals, concatenation, etc.)
   from step 4.
 - A bulleted list of consistency/drift concerns from step 4.
