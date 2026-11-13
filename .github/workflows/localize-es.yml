@@ -60,7 +60,7 @@ jobs:
           prompt: ${{ steps.load_prompt.outputs.content }}
           claude_args: |
             --mcp-config /tmp/black-ice-mcp.json
-            --allowedTools "Read,Write,Edit,Glob,Grep,mcp__black-ice__get_market_profile,mcp__black-ice__check_term,mcp__black-ice__list_concepts,mcp__black-ice__validate_translation"
+            --allowedTools "Read,Write,Edit,Glob,Grep,mcp__black-ice__get_market_profile,mcp__black-ice__check_term,mcp__black-ice__list_concepts,mcp__black-ice__list_classes,mcp__black-ice__validate_translation,mcp__black-ice__suggest_candidates,mcp__black-ice__propose_translation"
           # Claude Code writes locales/es-ES/**.json and .github/qa/qa-report.md
           # It never touches locales/en-US or workflow files.
           # Black Ice's API key can't be forwarded via a step-level env: block
