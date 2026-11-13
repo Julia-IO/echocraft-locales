@@ -1,0 +1,36 @@
+{
+  "_metadata": {
+    "product": "ECHOCRAFT",
+    "namespace": "mix_tools",
+    "locale": "en-US",
+    "version": "1.0.0",
+    "generated": "2026-11-13",
+    "scope_note": "Mix & AI tools panel in the studio view."
+  },
+
+  "mix_tools": {
+    "panel_title": "Mix tools",
+    "stem_separation_cta": "Split this audio with Stem Separation",
+    "stem_separation_hint": "Stem Separation pulls vocals, drums, bass and other parts out of a single audio file.",
+    "smart_mix_cta": "Balance my mix with Smart Mix Assistant",
+    "lyric_assistant_cta": "Get lyric ideas from Lyric Assistant",
+    "stem_export_hint": "Stem Export saves every track and bus as its own audio file.",
+    "sidechain_hint": "Add Sidechain Compression so the bass ducks under the kick.",
+    "groove_quantize_label": "Groove Quantize",
+    "tempo_map_label": "Tempo Map",
+    "midi_editor_link": "Open in MIDI Editor",
+
+    "_notes": {
+      "panel_title": "Panel header. Keep short.",
+      "stem_separation_cta": "Button. 'Stem Separation' is an ontology feature name. [EXPANSION RISK]",
+      "stem_separation_hint": "Helper text under the button.",
+      "smart_mix_cta": "Button. 'Smart Mix Assistant' is an ontology feature name. [EXPANSION RISK]",
+      "lyric_assistant_cta": "Button. 'Lyric Assistant' is an ontology feature name. [EXPANSION RISK]",
+      "stem_export_hint": "Helper text. 'Stem Export' is an ontology feature name (per-track/bus export, not AI separation).",
+      "sidechain_hint": "Tooltip. Sidechain compression is a standard mixing technique.",
+      "groove_quantize_label": "Menu item in the MIDI tools menu. [EXPANSION RISK]",
+      "tempo_map_label": "Tab label in the arrangement view. [EXPANSION RISK]",
+      "midi_editor_link": "Inline link. 'MIDI Editor' is an ontology feature name. MIDI is never translated."
+    }
+  }
+}
