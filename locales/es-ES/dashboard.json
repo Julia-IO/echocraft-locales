@@ -30,7 +30,7 @@
     "greeting_morning": "Buenos días, {name}.",
     "greeting_afternoon": "Buenas tardes, {name}.",
     "greeting_evening": "Buenas noches, {name}.",
-    "search_placeholder": "Buscar proyectos, plugins…",
+    "search_placeholder": "Buscar proyectos y plugins",
     "notifications_label": "Notificaciones",
     "notifications_empty": "Estás al día.",
     "notifications_new_singular": "{count} notificación nueva",
