@@ -1,12 +1,17 @@
-**1 key translated, 0 flagged for human review.** (`dashboard.header.search_placeholder` → "Buscar proyectos y plugins"; validate_translation: no flags)
+**10 keys translated (`mix_tools.json`, new file), 3 flagged.**
 
 **Black Ice ontology terms used**
-- None. No ontology concept matches "project", "plugin" or "search". The nearest match, Shared Project → "proyecto compartido" (pending), doesn't apply here.
+- editor MIDI (MIDI Editor): approved
+- separación de stems (Stem Separation): no es-es term; proposed. Helper text only, the button uses "Separar en stems".
+- exportación de stems (Stem Export): no es-es term; proposed. Matches the pattern of "exportación MP3" / "exportación WAV/FLAC".
+- asistente de mezcla inteligente (Smart Mix Assistant): no es-es term; proposed. It doesn't appear in the UI; the button uses the action form.
+- asistente de letras (Lyric Assistant): no es-es term; proposed. It doesn't appear in the UI; the button uses the action form.
 
-**New term candidates**
-- plugin → "plugins": kept the English loanword, which is standard in Spanish DAW usage; "complemento" was rejected as too generic. This is the first use in es-ES, so it needs an approved ontology term.
-- project → "proyectos": matches existing es-ES usage (`nav.projects`, `projects.*`), but there is no approved ontology concept for it.
-- search → "Buscar": standard UI verb, no concept found.
+**New-concept candidates:** 3 candidates sent to the Black Ice queue (2 added, 1 repeat).
 
-**Consistency/drift**
-- The en-US source dropped the trailing ellipsis ("…"), so the es-ES string drops it too. Other search or placeholder fields, if any are added later, should follow the same style.
+**Proposed es-es terms:** 4 es-es terms proposed in Black Ice (4 accepted, returned status "applied" rather than "pending"; please confirm they were not auto-approved).
+
+**Consistency / drift**
+- `smart_mix_cta` / `lyric_assistant_cta` / `stem_separation_cta`: to stay within the 22-character button limit, the buttons use verb + object ("Equilibrar mi mezcla", "Pedir ideas de letra", "Separar en stems") and drop the feature name the English source includes. Check whether the product wants the feature name visible.
+- `stem_separation_hint`: the profile asks for "stems" to be explained on first mention ("pistas separadas"). It was left out for length. "Tú eliges qué conservar." was added as the AI control signal.
+- `panel_title`: the en-US scope says "Mix & AI tools", but the header reads only "Herramientas de mezcla", following the source "Mix tools".
